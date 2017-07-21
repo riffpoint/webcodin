@@ -1,0 +1,694 @@
+<div class="table-container">
+<table id="table<?php echo $this->_id;?>" class="large-12 columns">
+    <?php echo $this->thead ?>
+    <tbody>
+        <?php echo $this->rows ?>
+    </tbody>
+    <?php if($this->pager):?>
+    <tfoot>
+        <tr>
+            <td class="pager" colspan="<?php echo $this->columns->count()?>">
+                <?php echo $this->pager?>
+            </td>
+        </tr>
+    </tfoot>
+    <?php endif; ?>
+</table>
+<script type="text/javascript">
+    <?php if (isset($this->parent_route) && $this->parent_route === 'manage_promo_users') : ?>
+    var engineGroup = function(){
+        return {
+            init: function() {
+                var mainCheck = $('#ch1_checkbox');
+                mainCheck.change(function(){
+                    var checked = $(this).is(':checked');
+                    $('input[name^=checkbox]').each(function(){
+                        if (checked) {
+                            $(this).prop('checked','checked');
+                        } else {
+                            $(this).removeAttr('checked');
+                        }
+                    });
+
+                });
+                
+                $('input[name^=checkbox]').change(function(){
+                    var checked = $(this).is(':checked');
+                    if (! checked) {
+                        var countChecked = $('input[name^=checkbox]:checked').length;
+                        if (countChecked == 0 && mainCheck.is(':checked')) {
+                            mainCheck.removeAttr('checked');
+                        }
+                    }
+                })
+            },
+            delete: function(obj) {
+                var itemsId = [];              
+                $('input[name^=checkbox]').each(function(){
+                    if ($(this).is(':checked')) {
+                        itemsId.push($(this).val());
+                    }
+                });
+                if(itemsId.length == 0) {
+                    alert('You have not chosen any items!');
+                } else {
+                    var isDel = confirm("You are going to remove following items:\n"+itemsId.join('; ')+"\nAre You sure?");
+                    if (isDel) {
+                        $(obj).parent().find('a').prop('disabled', true);
+                        var href = obj.getAttribute('href');
+                        obj.setAttribute('href', href + '/' + itemsId.join('_'));
+                        return true;
+                    }
+                }
+
+                return false;
+            },
+            sendMessage: function(obj) {
+                var itemsId = [];              
+                $('input[name^=checkbox]').each(function(){
+                    var parent = $(this).parents('tr');
+                    var sentXls = parent.find('td.xlsWrapper').html();
+                    var sentSms = parent.find('td.smsWrapper').html();
+                    var sentMail = parent.find('td.mailWrapper').html();
+                    if ($(this).is(':checked') && ! sentXls && ! sentSms && ! sentMail) {
+                        itemsId.push($.trim(parent.find('td.userWrapper a').html()));
+                    } else {
+                        $(this).prop('checked', false)
+                    }
+                });
+                if(itemsId.length == 0) {
+                    alert('You have not chosen any items!');
+                } else {
+                    var isDel = confirm("You are going to " + $(obj).text().toLowerCase() + " to following items:\n"+itemsId.join('; ')+"\nAre You sure?");
+                    if (isDel) {
+                        $(obj).parent().find('a').prop('disabled', true);
+                        var href = obj.getAttribute('href');
+                        obj.setAttribute('href', href + '/' + itemsId.join('_'));
+                        return true;
+                    }
+                }                
+                return false;
+            }
+        };
+    }();        
+    <?php else: ?>
+    var deleteGroup = function(){
+        return {
+            init: function() {
+                var mainCheck = $('#ch1_checkbox');
+                mainCheck.change(function(){
+                    var checked = $(this).is(':checked');
+                    $('input[name^=checkbox]').each(function(){
+                        if (checked) {
+                            $(this).prop('checked','checked');
+                        } else {
+                            $(this).removeAttr('checked');
+                        }
+                    });
+
+                });
+                
+                $('input[name^=checkbox]').change(function(){
+                    var checked = $(this).is(':checked');
+                    if (! checked) {
+                        var countChecked = $('input[name^=checkbox]:checked').length;
+                        if (countChecked == 0 && mainCheck.is(':checked')) {
+                            mainCheck.removeAttr('checked');
+                        }
+                    }
+                })
+            },
+            run: function(obj) {
+
+                var itemsId = [];              
+                $('input[name^=checkbox]').each(function(){
+                    if ($(this).is(':checked')) {
+                        itemsId.push($(this).val());
+                    }
+                });
+                if(itemsId.length == 0) {
+                    alert('You have not chosen any items!');
+                } else {
+                    if ($(obj).text() == 'Delete') {
+                        var isDel = confirm("You are going to remove following items:\n"+itemsId.join('; ')+"\nAre You sure?");
+                    } else if ($(obj).text() == 'Send SMS') {
+                        var isDel = confirm("You are going to send SMS to following items:\n"+itemsId.join('; ')+"\nAre You sure?");
+                    }
+                    if (isDel) {
+                        var href = obj.getAttribute('href');
+                        obj.setAttribute('href', href + '/' + itemsId.join('_'));
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        };
+    }();
+    <?php endif;?>
+    
+    <?php if (isset($this->searches)) : ?>
+    var componentsSerchFields = function(){
+        var substringMatcher = function(key) {
+          var ajax_url = "<?php echo $this->url($this->parent_route . '/action', array('action' => 'getselected')); ?>";
+          
+          return function findMatches(q, cb) {
+             $.ajax({
+                  url: ajax_url,
+                  data: {key:key, val:q},
+                  type: 'post',
+                  dataType:'json',
+                  complete: function(data){
+                      var searches = [];
+                      $.each(JSON.parse(data.responseText), function(i, str){
+                          searches.push({value: str});
+                      });
+                      cb(searches);
+                  }
+              })
+
+                 
+          };
+        }; 
+        
+        var getChar = function(event) {
+            if (event.which == null) {
+              if (event.keyCode < 32) return null;
+              return String.fromCharCode(event.keyCode) // IE
+            }
+
+            if (event.which != 0 && event.charCode != 0) {
+              if (event.which < 32) return null;
+              return String.fromCharCode(event.which) // other
+            }
+
+            return null;            
+        };
+        
+        var sendDateFiltr = function(elt) {
+              var search = EvolaTable.search_array;
+              EvolaTable.search_array = search;
+              if ($(elt).attr('id') == 'rent_date_from') {
+                  search.from = $(elt).val();
+              }
+              if ($(elt).attr('id') == 'rent_date_to') {
+                  search.to = $(elt).val();
+              }
+              //if (search.status) {
+                    EvolaTable.reloadTable();
+              //}              
+        };
+        
+        var clearCheck = function(group) {
+            $(group).removeAttr('checked');
+        };
+        
+        var getCheckedValues = function(group) {
+            var values = [];
+            $(group).each(function(){
+                if ($(this).is(':checked')) {
+                    values.push($(this).val());
+                    
+                }                
+            });
+            return values;
+        };
+             
+        return {
+            
+            getCheckedValues: function(group){
+                return getCheckedValues(group);
+            },
+            
+            init: function(){
+                $('#clear-filter').show();
+                $('#clear-filter button').on('click', function(){
+                    EvolaTable.search_field = {};
+                    EvolaTable.search_array = {};
+                    $('.typeahead, .fdatepicker, .renting_date').val('');
+                    clearCheck('.renting_status');
+                    clearCheck('.pay_stat');
+                    $('.sFilter').val('');
+                    EvolaTable.toFirstPage();
+                    EvolaTable.reloadTable();                    
+                }).hover(
+                        function(){
+                            $(this).css('background-color', '#2284a1');
+                        },
+                        function(){
+                            $(this).css('background-color', '#2ba6cb');
+                        }
+                 );
+                
+                $('.typeahead').each(function(){
+                    $(this).typeahead({
+                        hint: true,
+                        highlight: true,
+                        minLength: 1
+                      },
+                      {
+                        name: $(this).attr('name'),
+                        source: substringMatcher($(this).attr('name'))
+                      }).on('typeahead:selected', function(ev, suggestion){
+                          var search = {
+                              key:$(this).attr('name'),
+                              val:suggestion.value
+                          };                          
+                          EvolaTable.search_field = search;
+                          EvolaTable.toFirstPage();
+                          EvolaTable.reloadTable();
+                      })
+                }).on('focus', function(){
+                    $('.typeahead, .fdatepicker').val('');
+                    $('.sFilter[name!=rating]').val('0');
+                    
+                });
+                
+                $('.fdatepicker').fdatepicker({
+                    format: 'yyyy-mm-dd',
+                }).on('changeDate', function(){
+                      var search = {
+                          key:$(this).attr('name'),
+                          val:$(this).val()
+                      }; 
+                      EvolaTable.search_field = search;
+                      EvolaTable.toFirstPage();
+                      EvolaTable.reloadTable();                      
+                }).on('focus', function(){$('.typeahead').val(''); $('.sFilter').val('0');});
+
+                var checkin = $('#rent_date_from').fdatepicker({
+                    format: 'yyyy-mm-dd',
+                    onRender: function (date) {
+                        if (checkout) {
+                            return date.valueOf() > checkout.date.valueOf() ? 'disabled' : '';
+                        }
+                    }                    
+                }).on('changeDate', function(){
+                    sendDateFiltr(this);
+                }).on('keypress', function(){
+                    return false;
+                }).data('datepicker');
+
+                var checkout = $('#rent_date_to').fdatepicker({
+                    format: 'yyyy-mm-dd',
+                    endDate: $('#rent_date_to').data('attr-extra') == "financial" ? new Date(new Date().setDate(new Date().getDate() - 1)) : new Date(),
+                    onRender: function (date) {
+                        if (!$('#rent_date_from').val()) {
+                            return '';
+                        }
+                        return date.valueOf() < checkin.date.valueOf() ? 'disabled' : '';
+                    }                    
+                }).on('changeDate', function(){
+                    sendDateFiltr(this);
+                }).on('keypress', function(){
+                    return false;
+                }).data('datepicker');                
+                
+                $('.typeahead[name = "id"]').on('keypress', function(e) {
+                    e = e || event;
+                    if (e.ctrlKey || e.altKey || e.metaKey) {
+                        return;
+                    }
+                    var chr = getChar(e);
+                    
+                    if (chr == null) {
+                        return;
+                    }
+
+                    if (chr < '0' || chr > '9') {
+                      return false;
+                    }
+                });
+                
+                $('.sFilter[name!=rating]').on('change', function(){
+                    $('.typeahead, .fdatepicker').val('')
+                    var search = {
+                        key:$(this).attr('name'),
+                        val:$(this).val()
+                    };                     
+                    EvolaTable.search_field = search;
+                    EvolaTable.toFirstPage();
+                    EvolaTable.reloadTable();
+                });
+                
+                $('.sFilter[name=rating]').on('change', function(){
+                    var search = {
+                        key:$(this).attr('name'),
+                        val:$(this).val()
+                    }; 
+                    EvolaTable.search_array = search;
+                    EvolaTable.toFirstPage();
+                    EvolaTable.reloadTable();
+                });                
+                
+                $('.list_status').on('click', function(event){  
+                      var checkBox = $(this).find('input');
+                      checkBox.attr('checked', !checkBox.attr('checked'));
+                      var search = EvolaTable.search_array;
+                      search.status = getCheckedValues('.renting_status');
+                      search.pay_stat = getCheckedValues('.pay_stat');
+                      EvolaTable.toFirstPage();
+                      EvolaTable.search_array = search;
+                      EvolaTable.reloadTable();                    
+                });
+                
+                $('.exportxls').on('click', function(){
+                    var rentings = getCheckedValues('.renting_status');
+                    rentings = rentings.join(',');
+                    var href = $(this).attr('href');
+                    var from = $('#rent_date_from').val();
+                    var to = $('#rent_date_to').val();
+                    href += '?from='+from+'&to='+to+'&rentings='+rentings;
+                    $.ajax({
+                        url: href,
+                        success: function(data){
+                            if(data != '0'){
+                                window.location.href = href;
+                            } else {
+                                alert('No data for the report in the specified time interval.\nPlease change "From Date" and "To Date" fields settings.');
+                            }
+                        }
+                    });
+                    return false;
+                });
+
+                $('.export-xls-financial').on('click', function(e){
+                    var href = $(this).attr('href');
+                    var from = $('#rent_date_from').val();
+                    var to = $('#rent_date_to').val();
+                    href += '?from='+from+'&to='+to;
+                    $.ajax({
+                        url: href,
+                        success: function(data){
+                            window.location.href = href;
+                        }
+                    });
+                    return false;
+                });
+            }
+        };
+    }();
+    <?php endif; ?>
+
+    <?php if (isset($this->modal)) : ?>
+        
+    var XmlModal = function(){
+        var exportXml = function(execDate) {
+                    var rentings = componentsSerchFields.getCheckedValues('.renting_status');
+                    rentings = rentings.join(',');
+                    var href = $('a.exportxml').attr('href');
+                    var from = $('#rent_date_from').val();
+                    var to = $('#rent_date_to').val();
+                    var payStat = componentsSerchFields.getCheckedValues('.pay_stat');
+                    payStat = payStat.join(',');
+                    var itemsId = [];              
+                    $('input[name^=checkbox]').each(function(){
+                        if ($(this).is(':checked')) {
+                            itemsId.push($(this).val());
+                        }
+                    }); 
+
+                    if (itemsId.length > 0){
+                        href += '/' + itemsId.join('_');
+                    } 
+                    
+                    href += '?from='+from+'&to='+to+'&rentings='+rentings+'&execdate='+execDate+'&pay-stat='+payStat;
+
+                    $.ajax({
+                        url: href,
+                        dataType: 'json',
+                        success: function(data){
+                            var clss = 'alert-box row ' + data.type;
+                            $('div.flash').remove();
+                            var mess = '<div class="large-12 columns flash">'
+                                + '<div data-alert class="' + clss + '">' + data.message
+                                + '<a href="#" class="close">&times;</a></div>'
+                                + '</div>';
+                            $('div.container').prepend(mess);
+                            EvolaTable.reloadTable();
+
+                        }
+                    });            
+        };
+        
+        var exportPromoXml = function(execDate) {
+            var href = $('a.exportxml').attr('href');
+            var sendData = {};
+            sendData.payStat = componentsSerchFields.getCheckedValues('.pay_stat');
+            sendData.messType = componentsSerchFields.getCheckedValues('.renting_status');
+            if ($('input[name="promote_id"]').val()) {
+                sendData.actionId = $('input[name="promote_id"]').val();
+            } else if ($('input[name="referal_id"]').val()) {
+                sendData.actionId = $('input[name="referal_id"]').val();
+            }
+            sendData.execDate = execDate;
+            $.ajax({
+                url: href,
+                data: sendData,
+                dataType: 'json',
+                type: 'post',
+                success: function(data){
+                    var clss = 'alert-box row ' + data.type;
+                    $('div.flash').remove();
+                    var mess = '<div class="large-12 columns flash">'
+                        + '<div data-alert class="' + clss + '">' + data.message
+                        + '<a href="#" class="close">&times;</a></div>'
+                        + '</div>';
+                    $('div.container').prepend(mess);
+                    EvolaTable.reloadTable();
+
+                }
+            });             
+            
+        };
+        
+        return {
+            init: function(){
+                var nowTemp = new Date();
+                var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);                    
+                $('.xmlDatePicker').fdatepicker({
+                    format: 'yyyy-mm-dd',
+                    onRender: function (date) {
+                                return date.valueOf() < now.valueOf() ? 'disabled' : '';
+                              },
+                });
+                
+                $('#xml_modal_cancell').click(function(){
+                    $('a.close-reveal-modal').trigger('click');
+                });
+
+                $('#xml_modal_apply').click(function(){    
+                    $('a.close-reveal-modal').trigger('click');
+                    var execDate = $('.xmlDatePicker').val();
+                    if ($('a.exportxml').hasClass('promo')) {
+                        exportPromoXml(execDate);
+                    } else {
+                        exportXml(execDate);
+                    }
+                });
+                
+            }
+        };
+    }();
+    
+    <?php endif; ?>    
+
+    var EvolaTable = {
+        //prop
+        'table': null,
+
+        'url': '<?php echo $this->ajax_url; ?>',
+
+        'sort_col': '<?php echo $this->columns->sort_col ?>',
+        'sort_dir': '<?php echo $this->columns->sort_dir ?>',
+
+        'page_lim': '<?php echo $this->page_limit?>',
+        'page_cur': '<?php echo $this->page_num?>',
+        'search_field': {},
+        'search_array': {},
+        'send_mail': {},
+
+        // functions
+        'initTable': function() {
+            var self = this;
+
+            // init sortable
+            var sortable = false;
+            this.table.find('th a.sort').each(function(){
+                sortable = true;
+                $(this).click(function(){
+                    var prevSort = $(this).is('.asc') ? 'desc' : 'asc';
+                    var $sort = $(this).next('span');
+                    if ($sort.length) {
+                        if ($sort.hasClass('asc')) {
+                            prevSort = 'asc';
+                        }
+                        if ($sort.hasClass('desc')) {
+                            prevSort = 'desc';
+                        }
+                    }
+                    var sort = prevSort == 'asc' ? 'desc' : 'asc';
+
+                    self.sort_col = $(this).attr('rel');
+                    self.sort_dir = sort;
+                    self.page_cur = 1;
+                    self.reloadTable();
+
+                    return false;
+                });
+            });
+
+            // init limits
+            this.table.find('tfoot td.pager select').change(function(){
+                var limit = $(this).val();
+                self.page_lim = limit;
+                self.page_cur = 1;
+                self.reloadTable();
+            });
+            //init page
+            var changePage = function() {
+                var curpage = $(this).val();
+                var maxPage = $('span#all_pages').text();
+                if (parseInt(curpage) > parseInt(maxPage)) {
+                    curpage = maxPage;
+                }
+                self.page_cur = curpage;
+                self.reloadTable();
+            };
+            this.table.find('tfoot td.pager input').keypress(function(e) {
+                if(e.which == 13) {
+                    changePage.apply(this);
+                }
+            }).blur(changePage);
+            if (typeof(deleteGroup) !== "undefined") {
+                deleteGroup.init();
+            }
+            if (typeof(engineGroup) !== "undefined") {
+                engineGroup.init();
+            }            
+            
+            //init individual sendmail
+            this.table.find('tbody td a.sendmail').click(function(){
+                if ($(this).attr('disabled')) {
+                    return false;
+                }
+                var href = $(this).attr('href');
+                $.ajax({
+                    url: href,
+                    success: function(data){
+                       // console.log(data);
+                        self.reloadTable();                       
+                    }
+                });
+                return false;
+            });
+            
+            // decrease expire time
+            if(this.table.find('span[data-source="expire"]').length > 0){
+                setInterval(function(table){
+                   table.find('span[data-source="expire"]').each(function(){
+                       var time = $(this).text();
+                        time = time.split(':');
+                        var hour = parseInt(time[0]);
+                        var min = parseInt(time[1]);
+                        time = 60*hour + min;
+                        time--;
+                        
+                        if (time <= 0) {
+                            time = 'expired';
+                            $(this).parent().html(time);
+                        } else {
+                            min = time%60 + '';
+                            if (min.length < 2) {
+                               min = '0' +  min;
+                            }
+                            hour = Math.floor(time/60);
+                            time = hour + ':' + min;
+                            $(this).text(time);
+                        }
+                        
+                   });
+                }, 60000, this.table);
+            }
+            
+            $('.us-statistics').hover(function(){
+                if ($(this).hasClass('empty')) {
+                    var td = $(this);
+                    $.ajax({
+                        url:"<?php echo $this->url('accounts/action', array('action'=>'getstatistics')); ?>"+'/'+$(this).data('user'),
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function(data){
+                            var leasings = data.leasings;
+                            var rentings = data.rentings;
+                            var html = '<ul><li>Leasings: ' + leasings + '</li>';
+                            html += '<li>Rentings: ' + rentings + '</li></ul>';
+                            td.append(html);
+                            td.find('span').hide();
+                            
+                            td.removeClass('empty');
+                        },                          
+                    });
+                } else {
+                    $(this).find('span').hide();
+                    $(this).find('ul').show();
+                }
+            }, function(){
+                $(this).find('ul').hide();
+                $(this).find('span').show();
+            });            
+        },
+        'reloadTable': function() {
+            var self = this;
+            if (!this.table || !this.table.length) {
+                return false;
+            }
+
+            jQuery.ajax({
+                url: self.url+'?reload',
+                data: {
+                    '_id': '<?php echo $this->_id;?>',
+                    'sort_col': self.sort_col,
+                    'sort_dir': self.sort_dir,
+                    'page_lim': self.page_lim,
+                    'page_cur': self.page_cur,
+                    'search_field': self.search_field,
+                    'search_array': self.search_array,
+                },
+                type: 'POST',
+                context: self.table
+            }).done(function(content){
+                var $table = $('<div>'+content+'</div>').find('#table<?php echo $this->_id;?>');
+                if ($table.length) {
+                    self.table.replaceWith($table);
+                    self.table = $table;
+                    $table.foundation();
+                    self.initTable();
+                }
+            });
+        },
+        'toFirstPage': function(){
+            this.page_cur = 1;
+        }
+    };
+    
+    function eBankingUpload() {
+        if ($('#eBank')) {
+            $('#eBank').trigger('click');
+        }
+        return false;
+    }; 
+    
+
+    $(function(){
+        EvolaTable['table'] = $('#table<?php echo $this->_id;?>');
+        EvolaTable.initTable();
+        if ( typeof componentsSerchFields != 'undefined') {
+            componentsSerchFields.init();
+        }
+        if (typeof XmlModal != 'undefined') {
+            XmlModal.init();
+        }
+    })
+</script>
+</div>
