@@ -1,0 +1,147 @@
+<?php
+
+/**
+ * @file
+ * Customize search functionality.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function banreservas_search_menu() {
+  // Customize search functionality.
+  $items['admin/banreservas/search-settings'] = array(
+    'title' => 'Search settings',
+    'description' => '',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['banreservas_search_settings_form'],
+    'access arguments' => ['banreservas site configuration'],
+    'file' => 'banreservas_search.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function banreservas_search_theme() {
+  return array(
+    'banreservas_search_block_popup_form' => array(
+      'render element' => 'element',
+      'template' => 'theme/banreservas-search-block-popup-form',
+    ),
+  );
+}
+
+/**
+ * Implements hook_panels_pane_content_alter().
+ */
+function banreservas_search_panels_pane_content_alter($content, $pane, $args, $contexts) {
+  // Customize search form.
+  if ($pane->subtype == 'search-form') {
+    $search_settings = variable_get('banreservas_search_block', array());
+
+    if (isset($content->content['search_block_form'])) {
+      // Customize label.
+      if (isset($search_settings['label_visibility'])) {
+        if (!$search_settings['label_visibility']) {
+          $content->content['search_block_form']['#title_display'] = 'invisible';
+        }
+        elseif (isset($search_settings['label']) && $search_settings['label']) {
+          $content->content['search_block_form']['#title'] = $search_settings['label'];
+        }
+      }
+      // Customize placeholder.
+      if (isset($search_settings['placeholder_text']) && $search_settings['placeholder_text']) {
+        $content->content['search_block_form']['#attributes']['placeholder'] = $search_settings['placeholder_text'];
+      }
+
+      // Adds default values.
+      if (drupal_match_path(current_path(), 'search/node/*')) {
+        $keywords = arg(2);
+        if (isset($keywords) && !empty($keywords)) {
+          $content->content['search_block_form']['#default_value'] = $keywords;
+          $content->content['search_block_form']['#value'] = $keywords;
+        }
+      }
+    }
+
+    // Customize submit button.
+    if (isset($content->content['actions']['submit'])) {
+      if (isset($search_settings['submit_text']) && $search_settings['submit_text']) {
+        $content->content['actions']['submit']['#value'] = $search_settings['submit_text'];
+      }
+    }
+
+    // Display form in popup-block in header.
+    if (isset($pane->configuration['show_in_popup']) && $pane->configuration['show_in_popup']) {
+      $content->content['#theme_wrappers'] = array('banreservas_search_block_popup_form');
+    }
+    else {
+      // Adds svg icon.
+      $content->content['svg_icon'] = array(
+        '#markup' => _banreservas_common_get_svg('icon-search'),
+        '#weight' => -100,
+      );
+    }
+  }
+}
+
+/**
+ * Process variables for banreservas-search-block-popup-form.tpl.php.
+ */
+function template_preprocess_banreservas_search_block_popup_form(&$variables) {
+  $variables['form_search'] = theme('form', $variables);
+}
+
+/**
+ * Implements hook_ctools_plugin_post_alter().
+ */
+function banreservas_search_ctools_plugin_post_alter(&$plugin, &$info) {
+  // Override a function defined by the plugin.
+  if ($info['type'] == 'content_types' && $plugin['name'] == 'block') {
+    $plugin['edit form'] = 'banreservas_search_form_ctools_block_content_type_edit_form';
+  }
+}
+
+/**
+ * Customize ctools edit form for search form.
+ */
+function banreservas_search_form_ctools_block_content_type_edit_form($form, &$form_state) {
+  $conf = $form_state['conf'];
+
+  if (isset($form_state['subtype_name']) && $form_state['subtype_name'] == 'search-form') {
+    $form['show_in_popup'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Display in popup block'),
+      '#default_value' => isset($conf['show_in_popup']) ? $conf['show_in_popup'] : 0,
+    );
+  }
+
+  return $form;
+}
+
+/**
+ * Custom submition handler.
+ */
+function banreservas_search_form_ctools_block_content_type_edit_form_submit($form, &$form_state) {
+  if (isset($form_state['values']['show_in_popup'])) {
+    $form_state['conf']['show_in_popup'] = $form_state['values']['show_in_popup'];
+  }
+  if (empty($form_state['subtype']) && isset($form_state['pane'])) {
+    $form_state['pane']->subtype = $form_state['conf']['module'] . '-' . $form_state['conf']['delta'];
+    unset($form_state['conf']['module']);
+    unset($form_state['conf']['delta']);
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function banreservas_search_views_pre_render(&$view) {
+  if (($view->name == 'search_results' && $view->current_display == 'pane_search_result')) {
+    // Adds ability to display total count in title.
+    $view->build_info['substitutions']['%total'] = $view->total_rows;
+  }
+}

@@ -1,0 +1,15 @@
+.oauth2-mailer-icon {
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.oauth2-mailer-icon:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.oauth2-mailer-google {
+  background: transparent url(google.png) 0px 0px no-repeat;
+}

@@ -1,0 +1,47 @@
+/*----------------------------------------------------------------*/
+/*-- Mailer CSS Document --*/
+/*----------------------------------------------------------------*/
+/*#mailer *, #mailer *::before, #mailer *::after { box-sizing: border-box; -webkit-font-smoothing: none !important; }*/
+#mailer { position: fixed; bottom: 0; right: 10px; z-index: 9999; background: #fff; min-width: 300px; font: 13px/15px Arial, Verdana, Tahoma, sans-serif; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); width: 550px; }
+#mailer.minimize { width: 300px; height: 40px; }
+/*-----------------------------------------------------------------*/
+/*--- Mailer Messages Styles ---*/
+/*-----------------------------------------------------------------*/
+#mailer .mailer-messages .messages { background-position: 7px 6px; margin: 0; min-height: 32px; padding: 10px 10px 10px 40px; border: 0; line-height: 16px; }
+#mailer .mailer-messages .messages .error { color: #cd4237;  }
+/*-----------------------------------------------------------------*/
+/*--- Mailer Toolbar Styles ---*/
+/*-----------------------------------------------------------------*/
+#mailer .mailer-tool-bar { background: #404040; height: 40px; overflow: hidden; color: #fff; }
+#mailer .mailer-tool-bar h2 { float: left; margin: 0 !important; padding: 13px 10px 0 12px; max-width: 200px; font-size: 13px; font-weight: bold; }
+#mailer .mailer-tool-bar .mailer-actions { float: right; padding: 8px; max-width: 100px; }
+#mailer .mailer-tool-bar .mailer-actions a { background: url(images/icons/mailer-actions.png) no-repeat; float: right; width: 24px; height: 24px; opacity: 0.7; text-indent: -10000px; }
+#mailer .mailer-tool-bar .mailer-actions a.mailer-close-window { background-position: 0 0; }
+#mailer .mailer-tool-bar .mailer-actions a.mailer-minimize-window { background-position: 0 -48px; }
+#mailer .mailer-tool-bar .mailer-actions a.mailer-minimize-window.window-minimized { background-position: 0 -24px; }
+#mailer .mailer-tool-bar .mailer-actions a:hover { opacity: 1; background-color: #aaa; }
+/*-----------------------------------------------------------------*/
+/*--- Mailer Main Content Styles ---*/
+/*-----------------------------------------------------------------*/
+.mailer-content { border: 1px solid #cfcfcf; border-width: 0 1px; width: 100%; box-sizing: border-box;}
+.mailer-content .form-item { padding: 0; margin: 0; border-top: 1px solid #cfcfcf; }
+.mailer-content .form-item label { display: none; }
+.mailer-content .form-item input, .mailer-content .form-item textarea { border: 0; background: #fff; font: 13px Arial, Verdana, Tahoma, sans-serif; color: #333; height: 40px; padding: 8px 12px; border-radius: 0 !important; -webkit-border-radius: 0 !important; outline: none; box-shadow: none !important; width: 100%; box-sizing: border-box;}
+.mailer-content .form-item input.error, .mailer-content .form-item textarea.error { color: #cd4237; }
+.mailer-content .form-item input.error:focus, .mailer-content .form-item textarea.error:focus { color: #cd4237 !important; }
+.mailer-content .form-item input:focus, .mailer-content .form-item textarea:focus { color: #333; }
+.mailer-content .form-item input:placeholder, .mailer-content .form-item textarea:placeholder { color: #939393; }
+.mailer-content .form-item input::-webkit-input-placeholder, .mailer-content .form-item textarea::-webkit-input-placeholder { color: #939393; }
+.mailer-content .form-item input:-ms-input-placeholder, .mailer-content .form-item textarea:-ms-input-placeholder { color: #939393; }
+.mailer-content .form-item :-moz-placeholder { opacity: 1; color: #939393;}
+.mailer-content .form-item ::-moz-placeholder { opacity: 1; color: #939393; }
+.mailer-content .form-item textarea { height: 150px; padding: 8px 12px; line-height: 20px; resize: none; overflow: auto; }
+/*-----------------------------------------------------------------*/
+/*--- Mailer Form Actions Styles ---*/
+/*-----------------------------------------------------------------*/
+.mailer-content .form-actions { background: #efefef; padding: 8px; margin: 0; width: 100%; border-top: 1px solid #cfcfcf; overflow: hidden; box-sizing: border-box;}
+.mailer-content .form-actions input[type="submit"] { background: #4888ef; border: 1px solid #2d78f2; color: #fff !important; float: right; font: 13px/20px Arial, Verdana, Tahoma, sans-serif; font-weight: bold !important; height: 32px; padding: 4px 12px 3px; text-transform: none; margin: 0 0 0 8px; border-radius: 0 !important; -webkit-border-radius: 0 !important; outline: none !important; box-shadow: none !important; text-shadow: none !important; display: block; }
+.mailer-content .form-actions input[type="submit"]:hover { background: #2d78f2; border: 1px solid #2d78f2 !important; }
+.mailer-content .form-actions .ajax-progress { float: right; padding: 8px 0; }
+.mailer-content .form-actions .ajax-progress .throbber { height: 16px; margin: 0; width: 16px; background: url(images/icons/ajax-loader.gif) no-repeat !important; }
+.mailer-content .form-actions .ajax-progress .message { display: none; }

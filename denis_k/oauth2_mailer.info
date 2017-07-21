@@ -1,0 +1,18 @@
+name = OAuth2 mailer
+description = Sending e-mails through SMTP server via OAuth2 authentication.
+package = "OAuth2"
+core = 7.x
+configure = admin/config/services/oauth2_mailer
+
+files[] = classes/mail/smtp/mailer.phpmailer.inc
+files[] = classes/mail/smtp/mailer.transport.inc
+
+dependencies[] = libraries
+dependencies[] = oauth2_client
+
+; Information added by Drupal.org packaging script on 2016-10-20
+version = "7.x-1.0"
+core = "7.x"
+project = "oauth2_mailer"
+datestamp = "1476968067"
+
