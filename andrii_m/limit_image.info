@@ -1,0 +1,7 @@
+name = Limit Image Formatter
+description = Print only selected image from a multiple images field
+core = 7.x
+package = Fields
+dependencies[] = image
+
+
