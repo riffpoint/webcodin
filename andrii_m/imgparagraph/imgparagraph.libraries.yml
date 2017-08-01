@@ -1,0 +1,12 @@
+imgparagraph:
+  version: VERSION
+
+  css:
+    theme:
+      css/imgparagraph.css: {}
+  js:
+    js/imgparagraph.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

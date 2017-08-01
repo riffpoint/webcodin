@@ -1,0 +1,77 @@
+uuid: 490f2854-5481-4c2a-8aee-1c6c4e763ae1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordeon_image.field_accordeon_content
+    - field.field.paragraph.accordeon_image.field_accordeon_image
+    - field.field.paragraph.accordeon_image.field_accordeon_title
+    - paragraphs.paragraphs_type.accordeon_image
+  module:
+    - field_group
+    - image
+    - text
+third_party_settings:
+  field_group:
+    group_header:
+      children:
+        - field_accordeon_title
+      parent_name: group_right_side_placeholder
+      weight: 2
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: accordeon-header
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: header
+    group_it:
+      children:
+        - field_accordeon_image
+        - field_accordeon_content
+      parent_name: group_right_side_placeholder
+      weight: 3
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: accordeon-content
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Item content'
+id: paragraph.accordeon_image.default
+targetEntityType: paragraph
+bundle: accordeon_image
+mode: default
+content:
+  field_accordeon_content:
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_accordeon_image:
+    weight: 2
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_accordeon_title:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

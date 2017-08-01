@@ -1,0 +1,21 @@
+uuid: 28590d23-e6b6-4bcb-aeb1-e7664f116d24
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_accordeon_type
+    - paragraphs.paragraphs_type.accordeon_container
+  module:
+    - options
+id: paragraph.accordeon_container.field_accordeon_type
+field_name: field_accordeon_type
+entity_type: paragraph
+bundle: accordeon_container
+label: 'Accordeon type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

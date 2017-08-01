@@ -1,0 +1,25 @@
+.paragraph--type--accordeon-container {
+  overflow: hidden;
+  margin: 0 -15px;
+}
+.paragraph--type--accordeon-container.accordeon-type-left .accordeon-image-placeholder {
+  float: left;
+  padding: 0 15px;
+  width: 60%;
+}
+.paragraph--type--accordeon-container.accordeon-type-left .field--name-field-accordeon-item {
+  float: right;
+  padding: 0 15px;
+  width: 40%;
+}
+.paragraph--type--accordeon-container.accordeon-type-right .accordeon-image-placeholder {
+  float: right;
+  padding: 0 15px;
+  width: 60%;
+}
+.paragraph--type--accordeon-container.accordeon-type-right .field--name-field-accordeon-item {
+  float: left;
+  padding: 0 15px;
+  width: 40%;
+}
+

@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * Implement hook_page_attachments().
+ *
+ */
+function imgparagraph_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'imgparagraph/imgparagraph';
+}
+
+function imgparagraph_preprocess_paragraph__accordeon_container(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $accordeonType = $paragraph->field_accordeon_type->value;
+  if (!empty($accordeonType)) {
+    //set accordeon type as data type value
+    $variables['attributes']['data-accordeon-type'] = $accordeonType;
+    $variables['attributes']['class'] = array('accordeon-type-' .$accordeonType);
+  }
+}
+
+function imgparagraph_preprocess_field(&$variables){
+  $element = $variables['element'];
+  if (isset($element['#field_name']) && $element['#field_name'] == 'field_accordeon_type') {
+    //remove accordion type field from showing
+    $variables['items'] = array();
+  }
+  elseif (isset($element['#field_name']) && $element['#field_name'] == 'field_accordeon_title') {
+    $paragraph = $element['#object'];
+    $variables['attributes']['data-paragraph-id'] = $paragraph->id->value;
+  }
+}

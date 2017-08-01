@@ -1,0 +1,52 @@
+uuid: 5e4d3c41-593b-4015-a04c-615ca3089213
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordeon_container.field_accordeon_item
+    - field.field.paragraph.accordeon_container.field_accordeon_type
+    - paragraphs.paragraphs_type.accordeon_container
+  module:
+    - entity_reference_revisions
+    - field_group
+    - options
+third_party_settings:
+  field_group:
+    group_accordeon_image_placeholde:
+      children:
+        - field_accordeon_type
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: accordeon-image-placeholder
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Accordeon image placeholder'
+id: paragraph.accordeon_container.default
+targetEntityType: paragraph
+bundle: accordeon_container
+mode: default
+content:
+  field_accordeon_item:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_accordeon_type:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+hidden: {  }

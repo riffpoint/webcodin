@@ -1,0 +1,21 @@
+uuid: 9ded6c1e-8190-4945-85fa-2cf987700c9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_accordeon_title
+    - paragraphs.paragraphs_type.accordeon_image
+  module:
+    - text
+id: paragraph.accordeon_image.field_accordeon_title
+field_name: field_accordeon_title
+entity_type: paragraph
+bundle: accordeon_image
+label: 'Accordeon title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

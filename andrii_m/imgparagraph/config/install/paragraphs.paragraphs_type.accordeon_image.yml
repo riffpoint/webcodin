@@ -1,0 +1,7 @@
+uuid: 221ed933-d32e-4da5-9d25-30fde5e7a490
+langcode: en
+status: true
+dependencies: {  }
+id: accordeon_image
+label: 'Accordeon with image'
+behavior_plugins: {  }

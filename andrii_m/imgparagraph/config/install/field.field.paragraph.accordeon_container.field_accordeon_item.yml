@@ -1,0 +1,36 @@
+uuid: 1d7c85dd-2fb7-48c8-91dd-72abe3e4abef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_accordeon_item
+    - paragraphs.paragraphs_type.accordeon_container
+    - paragraphs.paragraphs_type.accordeon_image
+  module:
+    - entity_reference_revisions
+id: paragraph.accordeon_container.field_accordeon_item
+field_name: field_accordeon_item
+entity_type: paragraph
+bundle: accordeon_container
+label: 'Accordeon item'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      accordeon_image: accordeon_image
+    target_bundles_drag_drop:
+      accordeon_container:
+        weight: 4
+        enabled: false
+      accordeon_image:
+        enabled: true
+        weight: 5
+      paragraph_container:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,9 @@
+name: Accordeon image paragraph module
+description: Add accordeon image paragraph functionality.
+package: Imgparagraph
+
+type: module
+core: 8.x
+dependencies:
+  - paragraphs
+  - field_group

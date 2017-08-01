@@ -1,0 +1,7 @@
+uuid: b9664537-80cc-41eb-8ce8-64cc1a198638
+langcode: en
+status: true
+dependencies: {  }
+id: accordeon_container
+label: 'Accordeon container'
+behavior_plugins: {  }

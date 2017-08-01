@@ -1,0 +1,46 @@
+uuid: 6c48b24c-0a0b-42d5-a6d7-bd1605111bc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordeon_image.field_accordeon_content
+    - field.field.paragraph.accordeon_image.field_accordeon_image
+    - field.field.paragraph.accordeon_image.field_accordeon_title
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.accordeon_image
+  module:
+    - image
+    - text
+id: paragraph.accordeon_image.default
+targetEntityType: paragraph
+bundle: accordeon_image
+mode: default
+content:
+  field_accordeon_content:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: 'Enter content'
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_accordeon_image:
+    weight: 0
+    settings:
+      preview_image_style: thumbnail
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_accordeon_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: 'Enter a title'
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
