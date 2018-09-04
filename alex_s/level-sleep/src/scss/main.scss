@@ -1,0 +1,41 @@
+// Core variables and mixins
+@import "base/variables";
+@import "base/mixins";
+
+// Global styles
+@import "base/fonts";
+@import "base/reset";
+@import "base/typography";
+@import "base/base";
+
+// Components
+@import "components/promo-section";
+@import "components/header";
+@import "components/menu";
+@import "components/mattress-overview";
+@import "components/gallery";
+@import "components/button";
+@import "components/section-header";
+@import "components/read-reviews";
+@import "components/select-size";
+@import "components/info-label";
+@import "components/divider";
+@import "components/setup-section";
+@import "components/testimonials-section";
+@import "components/author-info";
+@import "components/proof-section";
+@import "components/text-box";
+@import "components/single-testimonial-section";
+@import "components/science-section";
+@import "components/warranty-section";
+@import "components/details-section";
+@import "components/product-card-section";
+@import "components/trust-section";
+@import "components/questions-section";
+@import "components/socials";
+@import "components/footer";
+@import "components/mobile-slider";
+@import "components/cta-mobile";
+
+
+

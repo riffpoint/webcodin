@@ -1,0 +1,162 @@
+.header {
+    @include clearfix;
+
+    font-size: em(14);
+    line-height: 21px;
+    color: $medium-gray;
+    font-family: $bold-font;  
+    background: $white;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+
+    .icon {
+        transition: color 0.1s linear;
+    }
+
+    .menu, 
+    .help-box, 
+    .cart-btn,
+    .menu-btn  {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .logo {
+        display: block;
+        padding: 10px 20px 15px;
+
+        img {
+            display: block;
+            height: 35px;
+        }
+    }
+}
+
+@media screen and (min-width: 720px) {
+    .header {
+        .help-box {
+            padding: 22px 24px 17px;
+            border-right: 1px solid $light-gray;
+
+            .icon {
+                margin-right: 12px;
+                font-size: 16px;
+                vertical-align: middle;
+            }
+    
+            &:hover {
+                a, .icon {
+                    color: $black;
+                }
+                
+            }
+        }
+
+        .cart-btn { 
+            width: 60px;
+            text-align: center;
+            padding: 22px 0 15px;
+            font-size: 18px;
+            color: $medium-gray;
+
+            &:hover {
+                color: $black;
+            }
+        }
+
+        .menu {
+            border-right: 1px solid $light-gray;
+            padding: 0 10px;
+    
+            a {
+                display: block;
+                padding: 22px 16px 17px;
+                color: $medium-gray;
+            }
+    
+            li {
+                &:hover > a {
+                    color: $black;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1099px) and (min-width: 720px) {
+    .header {
+        .help-box {
+            font-size: 0;
+            padding: 22px 0 17px;
+            text-align: center;
+            width: 60px;
+
+            .icon {
+                font-size: 16px;
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 719px) {
+    .header {
+        .menu {
+            display: none;
+        }
+
+        .help-box,
+        .menu-btn,
+        .cart-btn {
+            width: 60px;
+            text-align: center;
+            color: $medium-gray;
+            overflow: hidden;
+            border: none;
+            background: none;
+            padding: 0;
+            
+            .icon {
+                line-height: 60px;
+            }
+
+            &:not(:last-child) {
+                border-right: 1px solid $light-gray;
+            }
+        }
+
+        
+        .cart-btn {
+            font-size: 16px;
+        }
+
+        .help-box {
+            font-size: 0;
+
+            .icon {
+                font-size: 16px;
+            }
+        }
+
+        .menu-btn {
+            font-size: 13px;
+        }
+    }
+}
+
+@media screen and (max-width: 374px) {
+    .header {
+        .logo {
+            padding: 14px 20px 17px;
+
+            img {
+                height: 29px;
+            }
+        }
+
+        .help-box,
+        .menu-btn,
+        .cart-btn {
+            width: 55px;
+        }
+    }
+}

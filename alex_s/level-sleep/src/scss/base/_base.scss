@@ -1,0 +1,29 @@
+body {
+    background: $background-gray;
+}
+
+.small-section {
+    .container {
+        max-width: 1002px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .small-section {
+        .container {
+            max-width: 851px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) and (min-width: 375px) {
+    [class*="col-"],
+    .container {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .row {
+        margin-left: -40px;
+        margin-right: -40px;
+    }
+}

@@ -1,0 +1,12 @@
+body, html { margin: 0; padding: 0; outline: none; min-width: 320px; }
+body { color: $dark-gray; font: #{$font-size}/#{$line-height} #{$base-font}, Helvetica, Arial, sans-serif; }
+p, img { margin: 0; padding: 0; }
+h1, h2, h3, h4 ,h5, h6 { font-weight: normal; padding: 0; margin: 0; }
+button, a { outline: none; -webkit-outline: none; -moz-outline: none; }
+a img { border: 0; display: block; outline: none; -webkit-outline: none; -moz-outline: none; }
+img { max-width: 100%; height: auto; }
+a { transition: color 0.1s linear; }
+a, a:focus { color: $primary-blue; }
+a:hover, a:focus { text-decoration: none; outline: none !important; }
+a:hover { color: $black; }
+

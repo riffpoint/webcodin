@@ -1,0 +1,147 @@
+.footer {
+    .logo {
+        padding: 10px 0;
+        width: 120px;
+        display: block;
+    }
+
+    .footer-row {
+        a {
+            color: $white;  
+
+            &:hover {
+                color: $primary-blue;
+            }
+        }
+
+    }
+
+    .f-title {
+        font-size: em(18);
+        line-height: 21px;
+        color: $medium-gray;
+        font-family: $bold-font;
+        padding: 0 0 20px;
+    }
+
+    .wysiwyg {
+        font-size: em(14);
+        line-height: 21px;
+        font-family: $bold-font; 
+        color: $white;
+    }
+
+    .f-info-link {
+        li,a {
+            line-height: 21px;
+        }
+        a {
+            font-size: em(14);
+            font-family: $bold-font;
+        }
+    }
+
+    .socials {
+        li {
+            &:not(:last-child) {
+                padding-right: 17px;
+            }
+        }
+
+        a {
+            font-size: em(30);
+        }
+    }
+
+    .terms-menu {
+        li {
+            &:not(:last-child) {
+                padding-right: 25px;
+            }
+        }
+
+        a {
+            font-size: em(14);
+            line-height: 21px;
+            color: $medium-gray;
+            font-family: $bold-font;
+
+            &:hover {
+                color: $primary-blue;
+            }
+        }
+    }
+
+    .copyright {
+        padding: 50px 0 0;
+        font-size: em(11);
+        line-height: 17px;
+        color: rgba(255, 255, 255, 0.3);
+        font-family: $bold-font;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .footer {
+        background: linear-gradient(to right, $primary-blue 41.66666667%, $black 0%);
+
+        .footer-row {
+            padding: 30px 0;
+
+            &:first-of-type  {
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+            }
+        }
+
+        & > .container {
+            padding-top: 60px;
+            padding-bottom: 60px;
+            background: linear-gradient(to right, $primary-blue 41.66666667%, $black 0%);
+
+            & > .row {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .footer {
+        .blue,
+        .black {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .blue {
+            background: $primary-blue;
+        }
+
+        .black {
+            background: $black;
+        }
+
+        .footer-row {
+            .terms-menu,
+            .row-inner {
+                padding: 30px 0;
+            }
+
+            .row-inner {
+                padding: 30px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+            }
+        }
+
+        .logo {
+            padding: 0 0 10px;
+        }
+
+        .f-info-link {
+            li {
+                padding: 0 0 10px;
+            }
+        }
+    }
+}

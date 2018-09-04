@@ -1,0 +1,45 @@
+.base-btn-wrap {
+    .base-btn {
+        border: none;
+        margin: 0;
+        display: inline-block;
+        text-align: center;
+        font-family: $bold-font;
+        transition: color 0.1s linear, background-color 0.1s linear;
+
+        &.blue {
+            background: $primary-blue;
+            color: $white;
+        }
+
+        &.black {
+            background: $black;
+            color: $white;
+        }
+
+        &.white {
+            background: $white;
+            color: $dark-gray;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .base-btn-wrap {
+        .base-btn {
+            &.h-dark {
+                &:hover {
+                    background: $black;
+                    color: $white;
+                }
+            }
+    
+            &.h-light {
+                &:hover {
+                    color: $primary-blue;
+                    background: $white;
+                }
+            }
+        }
+    }
+}

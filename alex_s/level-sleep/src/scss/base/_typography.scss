@@ -1,0 +1,103 @@
+.wysiwyg { 
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $dark-gray; padding: 20px 0;
+    }
+
+    h1 {
+        font-size: em(38); 
+        line-height: 38px;
+    }
+    h2 {
+        font-size: em(36); 
+        line-height: 36px;
+    }
+    h3 {
+        font-size: em(32); 
+        line-height: 32px;
+    }
+    h4 {
+        font-size: em(28); 
+        line-height: 28px;
+    }
+    h5 {
+        font-size: em(24); 
+        line-height: 24px;
+    }
+    h6 {
+        font-size: em(22); 
+        line-height: 22px;
+    }
+
+    strong {
+        font-family: $bold-font;
+        font-weight: normal;
+    }
+
+    em {
+        font-family: $italic-font;
+        font-style: normal;
+    }
+
+    p { 
+        padding: 5px 0; 
+    }
+
+    ol {
+        padding: 12px 0 12px 15px; 
+        margin: 0;
+
+        li {
+            padding: 0 0 5px;
+            margin: 0 0 10px;
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 12px 0;
+        li { 
+            padding-left: 20px; 
+            position: relative; 
+            margin: 0 0 6px;
+
+            &:before { 
+                content: ""; 
+                position: absolute; 
+                top: 9px; 
+                left: 0; 
+                background: currentColor; 
+                width: 5px;
+                height: 5px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    img {
+        max-width: 100%; 
+        height: auto;
+    }
+
+    ul,
+    ol,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        &:first-child {
+            padding-top: 0;
+        }
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+}

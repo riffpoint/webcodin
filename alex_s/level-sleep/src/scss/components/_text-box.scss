@@ -1,0 +1,21 @@
+.text-box {
+    .icon-wrap {
+        padding-bottom: 20px; 
+
+        .icon {
+            font-size: 24px;
+        }
+    }
+
+    .b-title {
+        padding-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .text-box {
+        .b-title {
+            min-height: 52px;
+        }
+    }
+}

@@ -1,0 +1,31 @@
+.divider {
+    padding: 0 0 40px;
+    
+    .container {
+        position: relative;
+        text-align: center;
+        z-index: 1;
+
+        &::before {
+            content: "";
+            height: 1px;
+            background: $light-gray;
+            position: absolute;
+            display: block;
+            left: 22px;
+            right: 22px;
+            top: 50%;
+            z-index: -1;
+        }
+    }
+
+    .info-label {
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .divider {
+        padding-bottom: 10px;
+    }
+}

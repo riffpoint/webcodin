@@ -1,0 +1,36 @@
+.mobile-slider {
+    .m-slider-controls {
+        padding: 40px 0 0;
+        color: $dark-gray;
+
+        .arrow-prev,
+        .arrow-next {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            background: none;
+            font-size: em(40);
+            transition: color 0.2s linear;
+
+            &:hover {
+                color: $primary-blue;
+            }
+        }
+
+        .slider-counter {
+            font-size: em(14);
+            line-height: 20px;
+            font-family: $bold-font;
+            width: 70px;
+            text-align: center;
+            letter-spacing: 5px;
+        }
+
+        .arrow-prev,
+        .arrow-next,
+        .slider-counter {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}

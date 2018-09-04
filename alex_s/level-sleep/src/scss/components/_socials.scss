@@ -1,0 +1,12 @@
+.socials {
+    ul {
+        @include clear-list-style;
+        @include clearfix;
+    }
+
+    &.horizontal {
+        li {
+            float: left;
+        }
+    }
+}

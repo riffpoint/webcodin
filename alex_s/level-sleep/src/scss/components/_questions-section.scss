@@ -1,0 +1,39 @@
+.questions-section {
+    color: $white;
+
+    .icon-wrap {
+        padding: 0 0 20px;
+
+        .icon {
+            font-size: em(35);
+        }
+    }
+
+    .q-title {
+        font-family: $title-font;
+        font-size: em(30);
+        line-height: 30px;
+        padding: 0 0 15px;
+    }
+
+    .base-btn-wrap {
+        padding: 5px 0;
+    }
+
+    .base-btn {
+        font-size: em(18);
+        line-height: 20px;
+        padding: 15px 45px;
+        width: 100%;
+        border-radius: 34px;
+        position: relative;
+
+        .icon {
+            font-size: em(19);
+            position: absolute;
+            left: 21px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}

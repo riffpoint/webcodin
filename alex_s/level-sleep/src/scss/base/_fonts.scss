@@ -1,0 +1,57 @@
+//------------------------------------------------------
+//--- Font Family :: [Vollkorn] :: Regular ---
+//------------------------------------------------------
+@font-face {
+    font-family: 'VollkornRegular';
+    src: url('../fonts/vollkorn-regular.eot');
+    src: url('../fonts/vollkorn-regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/vollkorn-regular.woff2') format('woff2'),
+         url('../fonts/vollkorn-regular.woff') format('woff'),
+         url('../fonts/vollkorn-regular.ttf') format('truetype'),
+         url('../fonts/vollkorn-regular.svg#vollkornregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+//------------------------------------------------------
+//--- Font Family :: [Vollkorn] :: Italic ---
+//------------------------------------------------------
+@font-face {
+    font-family: 'VollkornItalic';
+    src: url('../fonts/vollkorn-italic.eot');
+    src: url('../fonts/vollkorn-italic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/vollkorn-italic.woff2') format('woff2'),
+         url('../fonts/vollkorn-italic.woff') format('woff'),
+         url('../fonts/vollkorn-italic.ttf') format('truetype'),
+         url('../fonts/vollkorn-italic.svg#VollkornItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+//------------------------------------------------------
+//--- Font Family :: [Crimson Text] :: Regular ---
+//------------------------------------------------------
+@font-face {
+    font-family: 'CrimsonTextRegular';
+    src: url('../fonts/crimsontext-regular.eot');
+    src: url('../fonts/crimsontext-regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/crimsontext-regular.woff2') format('woff2'),
+         url('../fonts/crimsontext-regular.woff') format('woff'),
+         url('../fonts/crimsontext-regular.ttf') format('truetype'),
+         url('../fonts/crimsontext-regular.svg#CrimsonTextRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+//------------------------------------------------------
+//--- Font Family :: [Nexa] :: Bold ---
+//------------------------------------------------------
+@font-face {
+    font-family: 'NexaBold';
+    src: url('../fonts/nexa-bold.eot');
+    src: url('../fonts/nexa-bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/nexa-bold.woff2') format('woff2'),
+         url('../fonts/nexa-bold.woff') format('woff'),
+         url('../fonts/nexa-bold.ttf') format('truetype'),
+         url('../fonts/nexa-bold.svg#NexaBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,91 @@
+.gallery {
+    .slick-dots {
+        @include clear-list-style;
+        text-align: center;
+        font-size: 0;
+
+        li {
+            display: inline-block;
+        }
+    }
+
+    .gallery-item {
+        position: relative;
+        padding-bottom: 56.3%;
+        
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        } 
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .gallery {
+        .slick-dots {
+            li {
+                padding: 0 6px 8px;
+                position: relative;
+    
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 6px;
+                    right: 6px;
+                    bottom: 0;
+                    height: 4px;
+                    background: $black;
+                    opacity: 0;
+                    transition: opacity $transition-time linear; 
+                }
+    
+                &.slick-active {
+                    &::after {
+                        opacity: 1;
+                    }
+                }
+    
+                div {
+                    position: relative;
+                    width: 49px;
+                    height: 28px;
+                    cursor: pointer;
+                }
+    
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .gallery {
+        .slick-dots {
+            li {
+                padding: 12px 8px;
+
+                &.slick-active  {
+                    div {
+                        background: $black;
+                    }
+                }
+            }
+            
+            div {
+                width: 8px;
+                height: 8px;
+                border-radius: 8px;
+                background: $light-gray;
+            }
+        }
+    }
+}

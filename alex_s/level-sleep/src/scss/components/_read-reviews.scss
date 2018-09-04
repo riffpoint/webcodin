@@ -1,0 +1,26 @@
+.read-reviews {
+    display: inline-block;
+    
+    span {
+        vertical-align: middle;
+        display: inline-block;
+    }
+
+    .r-stars {
+        font-size: 25px;
+        color: $primary-blue;
+        margin: 0 -3px;
+
+        span {
+            margin: 0 3px;
+        }
+    }
+
+    .r-text {
+        font-family: $bold-font;
+        font-size: em(14);
+        line-height: 16px;
+        margin-left: 10px;
+        border-bottom: 1px solid currentColor;
+    }
+}

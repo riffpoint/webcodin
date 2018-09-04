@@ -1,0 +1,55 @@
+.details-section {
+    background: $black;
+    color: $white;
+    padding: 100px 0;
+
+    .section-header {
+        &.position-center {
+            padding-bottom: 60px;
+        }
+    }
+
+    a {
+        &:hover {
+            color: $white;
+        }
+    }
+
+    .d-column {
+        border-top: 2px solid $white;
+        padding: 50px 0 0;
+
+        .d-title {
+            font-family: $title-font;
+            font-size: em(30);
+            line-height: 30px;
+            padding: 0 0 27px;
+        }
+
+        .wysiwyg {
+            padding: 0 0 25px;
+        }
+
+        table {
+            width: 100%;
+
+            td {
+                height: 35px;
+
+                &:nth-child(1) {
+                    font-family: $bold-font;
+                }
+
+                &:nth-child(2) {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .details-section {
+        padding: 40px 0 70px;
+    }
+}

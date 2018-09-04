@@ -1,0 +1,58 @@
+.section-header {
+    &.position-center {
+        padding-bottom: 25px;
+    }
+
+    .icon-wrap {
+        padding: 0 0 20px;
+
+        .icon {
+            color: $light-gray;
+        }
+    }
+
+    .h-title {
+        font-family: $title-font;
+        font-size: em(36);
+        line-height: 36px;
+        font-weight: normal;
+    }
+
+    .h-description {
+        padding-top: 20px; 
+    }
+}
+
+@media screen and (min-width: 1101px) {
+    .section-header {
+        .h-title {
+            font-size: em(44);
+            line-height: 44px;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .section-header {
+        &.position-center {
+            max-width: 580px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .icon-wrap {
+            .icon {
+                font-size: em(51);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .section-header {
+        .icon-wrap {
+            .icon {
+                font-size: em(30);
+            }
+        }
+    }
+}

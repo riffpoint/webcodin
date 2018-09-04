@@ -1,0 +1,15 @@
+.promo-section {
+    background: $primary-blue;
+    color: #fff;
+    text-align: center;
+    padding: 8px 0;
+    font-size: em(11);
+    line-height: 13px;
+    font-family: $bold-font;  
+}
+
+@media screen and (max-width: 767px) {
+    .promo-section {
+        padding: 4px 0;
+    }
+}

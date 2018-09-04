@@ -1,0 +1,28 @@
+// Colors
+$primary-blue: #009bd8;
+$light-blue: #c6e5f1;
+
+$black: #1a1a1a;
+$black-light: #202020;
+
+$extra-dark-gray: #333;
+$gray: #bdbdbd;
+$dark-gray: #4d4d4d;
+$medium-gray: #828282;
+$light-gray: #ccc;
+$extra-light-gray: #e5e5e5;
+$background-gray: #f7f7f7;
+
+$white: #fff;
+
+// Fonts
+$base-font: 'VollkornRegular';
+$title-font: 'CrimsonTextRegular';
+$bold-font: 'NexaBold';
+$italic-font: 'VollkornItalic';
+
+// Global
+$browser-context: 18;
+$font-size: #{$browser-context}px;
+$line-height: 25px;
+$transition-time: 0.3s;
