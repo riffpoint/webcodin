@@ -1,0 +1,159 @@
+@import "../../../styles/helpers/variables";
+@import "../../../styles/helpers/mixins";
+
+.dashboard {
+  &__activity {
+    max-width: 514px;
+    margin: 0 0 $grid-gutter-width;
+
+    @include media(md) {
+      margin-bottom: 15px;
+    }
+
+    &__header {
+      font-family: "RobotoMedium";
+      font-size: 1.2857rem;
+      color: $white;
+      height: 200px;
+      border-radius: 2px 2px 0 0;
+      background: $brand-color-1;
+      padding: 20px 25px;
+
+      @include media(md) {
+        height: 120px;
+        padding: 15px; 
+      }
+    }
+
+    &__body {
+      background: $white;
+      border-radius: 0 0 2px 2px;
+      padding: 0 $grid-gutter-width 0;
+
+      @include media(md) {
+        padding: 0 15px 15px; 
+      }
+
+      .row {
+        position: relative;
+        top: ($grid-gutter-width * -1);
+
+        @include media(md) {
+          top: 0;
+        }
+
+        .col {
+          @include media(md) {
+            margin-top: -40px;
+          }
+        }
+      }
+    }
+
+    &__item {
+      background: $white;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      padding: 10px 26px 20px;
+      height: 100%;
+
+      @include media(md) {
+        padding: 6px 15px 9px;
+      }
+
+      &__icon {
+        font-size: 4.6429rem;
+        color: $brand-color-1;
+        padding: 0 0 4px;
+
+        @include media(md) {
+          font-size: 4rem;
+          padding: 0;
+        }
+
+        .la-sticky-note {
+          margin-left: -9px;
+        }
+      }
+
+      &__title {
+        font-family: "RobotoMedium";
+        font-size: 1.4286rem;
+        color: $default;
+        padding: 0 0 8px;
+      }
+
+      &__description {
+        color: $gray-2;
+        line-height: 1.2;
+
+        span {
+          color: $brand-color-1;
+        }
+      }
+    }
+  }
+
+  &__list {
+    &__view-all {
+      font-family: "PoppinsMedium";
+      color: $brand-color-1;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $brand-color-2;
+      }
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+
+      &:first-child {
+        padding-top: 5px;
+      }
+
+      &:last-child {
+        padding-bottom: 5px;
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $border-color;
+      }
+
+      &__avatar {
+        flex: 0 0 70px;
+
+        &__img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          background: $brand-color-1 no-repeat center / cover;
+        }
+      }
+
+      &__title {
+        font-family: "PoppinsMedium";
+        font-size: 1.1429rem;
+        color: $default;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      &__info {
+        color: $default;
+        width: 100%;
+      }
+
+      &__description,
+      &__date {
+        color: $gray-2;
+
+        span {
+          color: $brand-color-1;
+        }
+      }
+    }
+  }
+}

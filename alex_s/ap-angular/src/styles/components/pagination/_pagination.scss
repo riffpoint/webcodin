@@ -1,0 +1,51 @@
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-right: -10px;
+
+  @include media(md) {
+    justify-content: flex-start;
+  }
+
+  &__item {
+    font-family: "PoppinsMedium";
+    font-size: 12px;
+    color: $default;
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 36px;
+    line-height: 36px;
+    background: $border-color;
+    margin: 2px 10px 2px 0;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    @include media(md) {
+      margin-right: 4px;
+    }
+
+    &:hover,
+    &--active {
+      color: $white;
+      background: $brand-color-1;
+    }
+
+    &--prev,
+    &--next {
+      font-size: 0.8571rem;
+
+      i {
+        position: relative;
+      }
+    }
+
+    &--disabled {
+      color: $default !important;
+      background: $gray-4 !important;
+      cursor: default;
+    }
+  }
+}

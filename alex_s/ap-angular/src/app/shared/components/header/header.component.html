@@ -1,0 +1,45 @@
+<header class="header" [ngClass]="{ 'header--is-hidden' : isHidden }">
+  <div class="container-fluid">
+    <button (click)="toggleSidebar()" type="button" class="header__sidebar-toggle">
+      <i class="la la-bars"></i>
+    </button>
+
+    <div class="header__user">
+      <div class="header__user__avatar" (click)="toggleNav()" [style.backgroundImage]="'url(' + userAvatar + ')'"></div>
+
+      <nav class="header__user__nav" [ngClass]="{ 'header__user__nav--visible' : !navIsHidden }">
+        <div class="header__user__nav__header">
+          <div class="header__user__nav__header__avatar" (click)="toggleNav()"
+            [style.backgroundImage]="'url(' + userAvatar + ')'"></div>
+          <div class="header__user__nav__header__info">
+            <div class="name"></div>
+            <a href="{{'mailto:' + userEmail}}">{{ userEmail }}</a>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <a class="header__user__nav__item" href="#" routerLink="/admin/profile"
+              routerLinkActive="header__user__nav__item--active">
+              <div class="header__user__nav__item__icon">
+                <i class="las la-user"></i>
+              </div>
+              My Profile
+            </a>
+          </li>
+          <li>
+            <a class="header__user__nav__item" href="#" [routerLink]="['/admin/posts/owner/user', userId]"
+              routerLinkActive="header__user__nav__item--active">
+              <div class="header__user__nav__item__icon">
+                <i class="la la-sticky-note-o"></i>
+              </div>
+              My Posts
+            </a>
+          </li>
+        </ul>
+        <div class="header__user__nav__footer">
+          <button class="btn btn--red" type="button" (click)="authService.SignOut()">LogOut</button>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,110 @@
+@import "../../styles/helpers/variables";
+@import "../../styles/helpers/mixins";
+
+.auth {
+  background: $white;
+
+  .container-fluid {
+    & > .row {
+      min-height: 100vh;
+
+      @include media(lg) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  .sidebar {
+    display: flex;
+    flex: 0 0 500px;
+    align-items: center;
+    justify-content: center;
+    background: $sidebar-bg;
+    color: $white;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    position: relative;
+
+    @include media(lg) {
+      flex: 0 0 auto;
+      justify-content: flex-start;
+      padding-top: $grid-gutter-width / 2;
+      padding-bottom: $grid-gutter-width / 2;
+    }
+
+    &__inner {
+      padding: 0 $grid-gutter-width / 2;
+    }
+
+    &__top-line {
+      font-family: 'PoppinsLight';
+      font-size: 1.286em;
+      text-transform: uppercase;
+      padding: 0 0 6px;
+
+      @include media(lg) {
+        font-size: 0.9286rem;
+        padding-bottom: 0;
+      }
+    }
+
+    &__title {
+      font-family: 'RobotoBold';
+      font-size: 2.714em;
+      line-height: 1.158em;
+      text-transform: uppercase;
+      padding: 0 0 20px;
+
+      @include media(lg) {
+        font-size: 1.9286rem;
+        padding-bottom: 0;
+      }
+    }
+
+    &__description {
+      font-family: 'PoppinsLight';
+      font-size: 1.143em;
+      line-height: 1.75;
+
+      @include media(lg) {
+        display: none;
+      }
+    }
+
+    &__copyright {
+      position: absolute;
+      bottom: 30px;
+      right: $grid-gutter-width;
+      text-align: right;
+
+      @include media(lg) {
+        display: none;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: $grid-gutter-width / 2;
+    padding-bottom: $grid-gutter-width / 2;
+
+    @include media(lg) {
+      flex-grow: 1;
+    }
+
+    &__inner {
+      width: 100%;
+      max-width: 410px;
+      padding: 0 $grid-gutter-width / 2;
+    }
+
+    &__title {
+      font-family: 'RobotoMedium';
+      font-size: 1.2857rem;
+      text-align: center;
+      padding: 0 0 12px;
+    }
+  }
+}

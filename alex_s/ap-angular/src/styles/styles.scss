@@ -1,0 +1,23 @@
+// Variables
+@import "helpers/variables";
+
+// Bootstrap v4.5.2
+@import "node_modules/bootstrap/scss/bootstrap-grid.scss";
+
+// Mixins
+@import "helpers/mixins";
+
+// Reset
+@import "base/reset";
+
+// Fonts
+@import "base/fonts";
+
+// Base
+@import "base/base";
+
+// Components
+@import "components/form/form";
+@import "components/button/button";
+@import "components/pagination/pagination";
+@import "components/table/table";

@@ -1,0 +1,79 @@
+<aside class="sidebar"
+    [ngClass]="{'sidebar--hidden' : sidebarIsHidden, 'sidebar--mobile-hidden' : sidebarMobileIsHidden}">
+    <div class="sidebar__header">
+        <a class="sidebar__header__logo" href="#" routerLink="/admin/dashboard">
+            <img src="assets/images/site/logo-sidebar.png" alt="RiffPoint" title="RiffPoint" />
+        </a>
+
+        <button (click)="toggleSidebar()" type="button" class="sidebar__header__btn">
+            <i class="las la-bars"></i>
+        </button>
+
+        <button (click)="toggleMobileSidebar()" type="button" class="sidebar__header__btn sidebar__header__btn--mobile">
+            <i class="las la-bars"></i>
+        </button>
+    </div>
+    <nav class="sidebar__nav">
+        <ul>
+            <li>
+                <a href="#" class="sidebar__nav__item" routerLink="/admin/dashboard"
+                    routerLinkActive="sidebar__nav__item--active">
+                    <span>
+                        <i class="las la-desktop sidebar__nav__item__icon sidebar__nav__item__icon--left"></i>
+                        Dashboard
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="sidebar__nav__item" routerLink="/admin/users"
+                    routerLinkActive="sidebar__nav__item--active">
+                    <span (click)="toggleSubMenu($event)">
+                        <i class="las la-sticky-note sidebar__nav__item__icon sidebar__nav__item__icon--left"></i>
+                        <i class="las la-angle-right sidebar__nav__item__icon sidebar__nav__item__icon--right"></i>
+                        Users
+                    </span>
+                </a>
+
+                <div class="sidebar__nav__submenu">
+                    <ul>
+                        <li>
+                            <a href="#" class="sidebar__nav__submenu__item" routerLink="/admin/users"
+                                routerLinkActive="sidebar__nav__submenu__item--active"
+                                [routerLinkActiveOptions]="{exact: true}">
+                                <span>All Users</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="sidebar__nav__item" routerLinkActive="sidebar__nav__item--active"
+                    routerLink="/admin/posts">
+                    <span (click)="toggleSubMenu($event)">
+                        <i class="las la-sticky-note sidebar__nav__item__icon sidebar__nav__item__icon--left"></i>
+                        <i class="las la-angle-right sidebar__nav__item__icon sidebar__nav__item__icon--right"></i>
+                        Posts
+                    </span>
+                </a>
+
+                <div class="sidebar__nav__submenu">
+                    <ul>
+                        <li>
+                            <a href="#" class="sidebar__nav__submenu__item" routerLink="/admin/posts"
+                                routerLinkActive="sidebar__nav__submenu__item--active"
+                                [routerLinkActiveOptions]="{exact: true}">
+                                <span>All Posts</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="sidebar__nav__submenu__item" routerLink="/admin/posts/add"
+                                routerLinkActive="sidebar__nav__submenu__item--active">
+                                <span>Add Post</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</aside>

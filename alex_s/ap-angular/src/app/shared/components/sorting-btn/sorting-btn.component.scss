@@ -1,0 +1,16 @@
+@import "../../../../styles/helpers/variables";
+
+.sorting-btn {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &__item {
+      margin: 0 1px;
+
+      &--active {
+        color: $brand-color-1;
+      }
+    }
+  }

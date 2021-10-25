@@ -1,0 +1,186 @@
+.table {
+  font-family: "PoppinsLight";
+  
+  table {
+    width: 100%;
+    border-top: 2px solid $border-color;
+    border-left: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__container {
+    overflow: auto;
+    border-right: 1px solid $border-color;
+  }
+
+  &__header__item,
+  &__body__item {
+    border-bottom: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+  }
+
+  &__header {
+    &__item {
+      font-family: "PoppinsMedium";
+      font-weight: 400;
+      border-bottom-width: 2px;
+      padding: 10px 15px;
+      text-align: left;
+
+      &--sortable {
+        padding-right: 40px;
+        position: relative;
+        cursor: pointer;
+      }
+
+      &--actions {
+        text-align: center;
+      }
+    }
+  }
+
+  &__body {
+    &__item {
+      padding: 17px 16px;
+
+      &--actions {
+        text-align: center;
+      }
+
+      &__edit,
+      &__delete {
+        font-size: 1.7143rem;
+        color: $default;
+        margin: 0 4px;
+        background: none;
+        cursor: pointer;
+
+        &:disabled {
+          opacity: 0.8;
+          cursor: default;
+        }
+      }
+
+      &__edit {
+        &:hover {
+          color: darken($default, 5%);
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        td {
+          background: $gray-4;
+        }
+      }
+    }
+  }
+
+  &__filters {
+    font-family: "PoppinsLight";
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 0 15px;
+
+    @include media(sm) {
+      display: block;
+    }
+  }
+
+  &__display-per-page {
+    margin-right: 15px;
+    position: relative;
+
+    @include media(sm) {
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 40px;
+      height: 100%;
+      width: 1px;
+      background: $border-color;
+    }
+
+    select {
+      font-size: 0.9286rem;
+      color: $gray-2;
+      width: 80px;
+      height: 40px;
+      border: 1px solid $border-color;
+      padding: 0 40px 0 10px;
+      margin: 0 0 0 10px;
+      cursor: pointer;
+      background: url(../../../assets/images/icons/caret-down-solid.svg) no-repeat right 15px center / 10px;
+      position: relative;
+    }
+  }
+
+  &__search {
+    @include media(md) {
+      display: flex;
+      align-items: center;
+    }
+
+    input {
+      font-family: "PoppinsItalic";
+      font-size: 0.9286rem;
+      color: $gray-2;
+      width: 260px;
+      height: 40px;
+      line-height: 40px;
+      border: 1px solid $border-color;
+      padding: 0 10px;
+      margin: 0 0 0 10px;
+
+      @include media(md) {
+        width: 150px;
+      }
+
+      @include media(md) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    padding: $grid-gutter-width 0 0;
+
+    @include media(md) {
+      padding-top: 15px;
+      display: block;
+    }
+  }
+
+  &__info {
+    font-size: 0.9286rem;
+    line-height: 19px;
+    color: $gray-2;
+    margin-left: $grid-gutter-width / 2px * -1px;
+
+    @include media(md) {
+      margin-left: 0;
+    }
+
+    span {
+      color: $default;
+    }
+  }
+
+  &__pagination {
+    margin-right: $grid-gutter-width / 2px * -1px;
+
+    @include media(md) {
+      padding-top: 15px;
+    }
+  }
+}

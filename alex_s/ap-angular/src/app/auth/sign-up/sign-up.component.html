@@ -1,0 +1,25 @@
+<form [formGroup]="userForm" class="form" [ngClass]="{submitted: isSubmitted}" (ngSubmit)="onSubmit()">
+  <div class="form__group form__group--required">
+      <label class="form__label" for="email">Email</label>
+
+      <input autocomplete="off" type="email" id="email" class="form__element" formControlName="email" />
+  </div>
+
+  <div class="form__group form__group--required">
+    <label class="form__label" for="password">Password</label>
+    <input autocomplete="off" type="password" id="password" class="form__element" formControlName="password" />
+  </div>
+
+  <div class="form__group form__group--required">
+    <label class="form__label" for="passwordConfirm">Confirm Password</label>
+    <input type="password" id="passwordConfirm" class="form__element" formControlName="passwordConfirm" />
+  </div>
+
+  <div class="form__submit form__submit--center">
+    <div class="btn-group">
+      <button [disabled]="loading" class="btn btn--red" type="submit">Sign Up</button>
+      
+      <button [disabled]="loading" class="btn btn--cancel" routerLink="/sign-in">Cancel</button>
+    </div>
+  </div>
+</form>

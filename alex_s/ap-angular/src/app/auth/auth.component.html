@@ -1,0 +1,40 @@
+<alert></alert>
+
+<div class="auth">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-5 sidebar">
+        <div class="sidebar__inner">
+          <div class="sidebar__top-line">Welcome to</div>
+          <div class="sidebar__title">Angular-based Administration Panel</div>
+          <div class="sidebar__description">
+            Developed by WebCoding Development Team - sub-division of Riff Point LLC.<br />
+            Tech list: Angular, Bootstrap 4, HTML 5, SAAS
+          </div>
+        </div>
+        <div class="sidebar__copyright">&copy; 2020. Riff Point. All rights reserved. </div>
+      </div>
+      <div class="col-lg-7 content">
+        <div class="content__inner" *ngIf="authType == 'sign-in'">
+          <div class="content__title">Sign In To Admin</div>
+          <app-sign-in></app-sign-in>
+        </div>
+
+        <div class="content__inner" *ngIf="authType == 'sign-up'">
+          <div class="content__title">Sign Up</div>
+          <app-sign-up></app-sign-up>
+        </div>
+
+        <div class="content__inner" *ngIf="authType == 'verify-email-address'">
+          <div class="content__title">Thank You for Registering</div>
+          <app-verify-email></app-verify-email>
+        </div>
+
+        <div class="content__inner" *ngIf="authType == 'forgot-password'">
+          <div class="content__title">Reset Password</div>
+          <app-forgot-password></app-forgot-password>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

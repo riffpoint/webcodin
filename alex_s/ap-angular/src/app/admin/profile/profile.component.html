@@ -1,0 +1,136 @@
+<div class="profile">
+  <h2 class="page-title">My Profile</h2>
+
+  <div class="row">
+    <div class="col profile__sidebar">
+      <div class="profile__card">
+        <div class="profile__card__header">
+          <div class="profile__card__header__inner">
+            <div class="profile__card__user-avatar">
+              <div class="profile__card__user-avatar__img" [style.backgroundImage]="'url(' + userAvatar + ')'"></div>
+            </div>
+            <div class="profile__card__user-name">
+              <span *ngIf="user && user.name">{{ user.name }} </span>
+              <span *ngIf="user && user.surname">{{ user.surname }}</span>
+            </div>
+            <div *ngIf="user && user.occupation" class="profile__card__user-occupation">{{ user.occupation }}</div>
+          </div>
+        </div>
+
+        <nav class="profile__card__nav">
+          <ul>
+            <li>
+              <a (click)="switchTab($event, 'GeneralInformation')" class="profile__card__nav__item" href="#"
+                [ngClass]="{'profile__card__nav__item--active' : tabState === 'GeneralInformation'}">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                General Information
+              </a>
+            </li>
+            <li>
+              <a (click)="switchTab($event, 'ChangePassword')" class="profile__card__nav__item" href="#"
+                [ngClass]="{'profile__card__nav__item--active' : tabState === 'ChangePassword'}">
+                <i class="fa fa-user-secret" aria-hidden="true"></i>
+                Change Password
+              </a>
+            </li>
+            <li>
+              <a class="profile__card__nav__item" href="#" [routerLink]="['/admin/posts/owner/user', userId]"
+                routerLinkActive="profile__card__nav__item--active">
+                <i class="fa fa-file-o" aria-hidden="true"></i>
+                My Posts
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="profile__card__footer">
+          <button class="btn btn--red" type="button" (click)="authService.SignOut()">Logout</button>
+        </div>
+      </div>
+    </div>
+    <div class="col profile__content">
+      <ng-template [ngIf]="tabState === 'GeneralInformation'">
+        <form [formGroup]="userForm" class="form" [ngClass]="{'submitted' : isSubmitted}" (ngSubmit)="onSubmit()">
+          <app-card>
+            <ng-container header-title>General Information</ng-container>
+            <ng-container body>
+              <div class="row">
+                <div class="col profile__content__left">
+                  <div class="form__group">
+                    <div class="form__upload">
+                      <div class="form__upload__avatar">
+                        <div class="form__upload__avatar__img"
+                          [style.backgroundImage]="'url(' + (userAvatarPreview ? userAvatarPreview : userAvatar) + ')'">
+                        </div>
+                        <button (click)="clearAvatar()" type="button" class="form__upload__avatar__clear"><i
+                            class="las la-times"></i></button>
+                      </div>
+                      <div class="form__upload__btn">
+                        <input type="file" id="avatar" formControlName="avatar" (change)="uploadPreview($event)"
+                          accept=".png,.jpg" />
+                        <label type="button" for="avatar" class="btn btn--gray">Upload Avatar</label>
+                      </div>
+                      <div class="form__upload__description">Maximum upload image size: <span>1MB</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form__group form__group--required">
+                    <label class="form__label" for="name">Name</label>
+                    <input type="text" id="name" class="form__element" formControlName="name" />
+                  </div>
+
+                  <div class="form__group form__group--required">
+                    <label class="form__label" for="surname">Surname</label>
+                    <input type="text" id="surname" class="form__element" formControlName="surname" />
+                  </div>
+
+                  <div class="form__group form__group--required">
+                    <label class="form__label" for="email">Email</label>
+                    <input type="email" id="email" class="form__element" formControlName="email" />
+                  </div>
+
+                  <div class="form__group form__group--required">
+                    <label class="form__label" for="occupation">Occupation</label>
+                    <input type="text" id="occupation" class="form__element" formControlName="occupation" />
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container footer>
+              <button [disabled]="loading" class="btn btn--blue" type="submit">Update</button>
+            </ng-container>
+          </app-card>
+        </form>
+      </ng-template>
+
+      <ng-template [ngIf]="tabState === 'ChangePassword'">
+        <form [formGroup]="userChangePasswordForm" class="form" [ngClass]="{'submitted' : isSubmitted}" (ngSubmit)="onChangePassword()">
+          <app-card>
+            <ng-container header-title>Change Password</ng-container>
+            <ng-container body>
+              <div class="form__group form__group--required">
+                <label class="form__label" for="passwordOld">Old Password</label>
+                <input type="password" id="passwordOld" class="form__element" formControlName="passwordOld" />
+              </div>
+
+              <div class="form__group form__group--required">
+                <label class="form__label" for="password">New Password</label>
+                <input type="password" id="password" class="form__element" formControlName="password" />
+              </div>
+
+              <div class="form__group form__group--required">
+                <label class="form__label" for="passwordConfirm">Confirm New Password</label>
+                <input type="password" id="passwordConfirm" class="form__element" formControlName="passwordConfirm" />
+              </div>
+            </ng-container>
+
+            <ng-container footer>
+              <button [disabled]="loading" class="btn btn--blue" type="submit">Update</button>
+            </ng-container>
+          </app-card>
+        </form>
+      </ng-template>
+    </div>
+  </div>
+</div>

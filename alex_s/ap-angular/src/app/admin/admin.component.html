@@ -1,0 +1,26 @@
+<alert></alert>
+
+<div class="admin" [class.admin--sidebar-hidden]="sidebarIsHidden">
+  <app-sidebar
+    [sidebarIsHidden]="sidebarIsHidden"
+    [sidebarMobileIsHidden]="sidebarMobileIsHidden"
+    (onToggleSidebar)="onToggleSidebar()"
+    (onToggleMobileSidebar)="onToggleMobileSidebar()"
+  ></app-sidebar>
+
+  <div *ngIf="!loading" class="admin__content">
+    <app-header [isHidden]="headerMobileIsHidden" (onToggleMobileSidebar)="onToggleMobileSidebar()"></app-header>
+
+    <div class="admin__content__inner">
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <app-footer></app-footer>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <i class="las la-spinner la-pulse la-6x la-fw"></i>
+  </div>
+</div>

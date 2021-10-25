@@ -1,0 +1,141 @@
+<div class="users">
+  <h2 class="page-title">Users</h2>
+
+  <div class="users__list">
+    <app-card [footerIsShow]="false">
+      <ng-container header-title>Registered Users</ng-container>
+
+      <ng-container body>
+        <div class="table">
+          <div class="table__filters">
+            <div class="table__display-per-page">
+              Display per page:
+              <select [(ngModel)]="usersPerPage" (change)="pagination.setCurrent(1)">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+
+            <div class="table__search">
+              Search:
+              <input [(ngModel)]="searchText" (keyup)="onSearchTextChange()" type="text" placeholder="Type keywords here..." />
+            </div>
+          </div>
+
+          <div class="table__container">
+            <table>
+              <thead>
+                <tr>
+                  <th class="table__header__item">Avatar</th>
+                  <th class="table__header__item table__header__item--sortable" (click)="sortUsers('name')">
+                    Name <app-sorting-btn [sortedBy]="sortedBy['name']"></app-sorting-btn>
+                  </th>
+                  <th class="table__header__item table__header__item--sortable" (click)="sortUsers('surname')">
+                    Surname <app-sorting-btn [sortedBy]="sortedBy['surname']"></app-sorting-btn>
+                  </th>
+                  <th class="table__header__item table__header__item--sortable" (click)="sortUsers('email')">
+                    Email <app-sorting-btn [sortedBy]="sortedBy['email']"></app-sorting-btn>
+                  </th>
+                  <th class="table__header__item table__header__item--sortable" (click)="sortUsers('occupation')">
+                    Occupation <app-sorting-btn [sortedBy]="sortedBy['occupation']"></app-sorting-btn>
+                  </th>
+                  <th class="table__header__item">Registered</th>
+                  <th class="table__header__item table__header__item--actions">Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let user of users | itemsFilter: searchText | paginate: { itemsPerPage: usersPerPage, currentPage: currentPage }">
+                  <td class="table__body__item">
+                    <div class="users__list__avatar">
+                      <div class="users__list__avatar__img"
+                        [style.backgroundImage]="'url(' + (user.photoURL ? user.photoURL : noImage) + ')'"></div>
+                    </div>
+                  </td>
+                  <td class="table__body__item">{{ user.name }}</td>
+                  <td class="table__body__item">{{ user.surname }}</td>
+                  <td class="table__body__item">{{ user.email }}</td>
+                  <td class="table__body__item">{{ user.occupation }}</td>
+                  <td class="table__body__item">{{ user.createdAt | date:"MMMM dd, yyyy" }}</td>
+                  <td class="table__body__item table__body__item--actions">
+                    <a href="#" [routerLink]="['/admin/users/edit', user.uid]" class="table__body__item__edit">
+                      <i class="las la-edit"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="table__footer">
+            <div class="table__info">
+              <div>Page: <span>{{ currentPage }}</span> of <span>{{ pagination.getLastPage() }}</span></div>
+              <div>
+                Showing <span>{{ currentPage > 1 && usersPerPage < pagination.getTotalItems() ? (currentPage - 1) * usersPerPage : 1 }} </span>
+                to
+                <span> {{ currentPage * usersPerPage <= pagination.getTotalItems() ? currentPage * usersPerPage : pagination.getTotalItems() }} </span>
+                of
+                <span> {{ pagination.getTotalItems() }}</span> entries
+              </div>
+            </div>
+
+            <div class="table__pagination">
+              <pagination-template #pagination="paginationApi" (pageChange)="currentPage = $event">
+                <div class="pagination">
+                  <button
+                    class="pagination__item pagination__item--prev"
+                    [ngClass]="{'pagination__item--disabled' : pagination.isFirstPage()}"
+                    (click)="!pagination.isFirstPage() && pagination.setCurrent(1)"
+                  >
+                  <i class="las la-angle-double-left"></i>
+                  </button>
+
+                  <button
+                    class="pagination__item pagination__item--prev"
+                    [ngClass]="{'pagination__item--disabled' : pagination.isFirstPage()}"
+                    (click)="!pagination.isFirstPage() && pagination.previous()"
+                  >
+                  <i class="las la-angle-left"></i>
+                  </button>
+
+                  <ng-container *ngFor="let page of pagination.pages">
+                    <button
+                      type="button"
+                      class="pagination__item"
+                      [ngClass]="{'pagination__item--active' : pagination.getCurrent() == page.value}"
+                      (click)="pagination.getCurrent() !== page.value && pagination.setCurrent(page.value)"
+                    >
+                      {{ page.label }}
+                    </button>
+                  </ng-container>
+
+                  <button
+                    class="pagination__item pagination__item--next"
+                    [ngClass]="{'pagination__item--disabled' : pagination.isLastPage()}"
+                    (click)="!pagination.isLastPage() && pagination.next()"
+                  >
+                  <i class="las la-angle-right"></i>
+                  </button>
+
+                  <button
+                    class="pagination__item pagination__item--next"
+                    [ngClass]="{'pagination__item--disabled' : pagination.isLastPage()}"
+                    (click)="!pagination.isLastPage() && pagination.setCurrent(pagination.getLastPage())"
+                  >
+                  <i class="las la-angle-double-right"></i>
+                  </button>
+                </div>
+              </pagination-template>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </app-card>
+  </div>
+</div>

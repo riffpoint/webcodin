@@ -1,0 +1,36 @@
+@import "../../styles/helpers/variables";
+
+.page-404 {
+  min-height: 100vh;
+  background: url(../../assets/images/backgrounds/page-404-bg.png) no-repeat center bottom / cover;
+  padding: 150px 0 0;
+
+  &__inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: "RobotoBold";
+    font-size: 14.2857rem;
+    line-height: 1;
+    color: $red;
+  }
+
+  &__subtitle {
+    font-family: "RobotoBold";
+    font-size: 2.4286rem;
+    line-height: 1.2;
+    color: $red;
+    text-transform: uppercase;
+    padding: 0 0 10px;
+  }
+
+  &__description {
+    font-family: "PoppinsLight";
+    font-size: 1.7143rem;
+    line-height: 1.4167;
+    padding: 0 0 20px;
+  }
+}

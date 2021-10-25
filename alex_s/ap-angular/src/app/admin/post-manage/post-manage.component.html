@@ -1,0 +1,56 @@
+<div class="post-manage">
+  <h2 class="page-title">Posts</h2>
+
+  <form [formGroup]="postForm" class="form" [ngClass]="{submitted: isSubmitted}" (ngSubmit)="onSubmit()">
+    <app-card>
+      <ng-container header-title>{{ title }}</ng-container>
+
+      <ng-container body>
+        <div class="row">
+          <div class="col-lg post-manage__image-wrap">
+            <div class="form__upload">
+              <div class="form__upload__image">
+                <div class="form__upload__image__img"
+                  [style.backgroundImage]="'url(' + (postImagePreview ? postImagePreview : postImage) + ')'">
+                </div>
+                <button *ngIf="postImage || postImagePreview" (click)="clearImage()" type="button"
+                  class="form__upload__image__clear"><i class="las la-times"></i></button>
+              </div>
+              <div class="form__upload__btn">
+                <input type="file" id="image" formControlName="image" (change)="uploadPreview($event)"
+                  accept=".png,.jpg" />
+                <label type="button" for="image" class="btn btn--gray">Upload Image</label>
+              </div>
+              <div class="form__upload__description" [ngClass]="{'form__upload__description--danger' : postImageOverSize}">
+                Maximum upload image size: <span>1MB</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg">
+            <div class="form__group form__group--required">
+              <label class="form__label" for="title">Title</label>
+              <input type="text" id="title" class="form__element" formControlName="title" />
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="excerpt">Excerpt</label>
+              <input type="text" id="excerpt" class="form__element" formControlName="excerpt" />
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="form__group form__group--required">
+          <label class="form__label" for="description">Description</label>
+          <textarea id="description" class="form__element" formControlName="description"></textarea>
+        </div>
+      </ng-container>
+
+      <ng-container footer>
+        <div class="btn-group">
+          <button [disabled]="loading" class="btn btn--blue" type="submit">{{ submitBtnTitle }}</button>
+          <a class="btn btn--cancel" href="#" [routerLink]="loading ? [] : ['/admin/posts']">Cancel</a>
+        </div>
+      </ng-container>
+    </app-card>
+  </form>
+</div>

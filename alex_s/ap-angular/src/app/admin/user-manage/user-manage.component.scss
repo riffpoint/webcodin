@@ -1,0 +1,25 @@
+@import "../../../styles/helpers/variables";
+@import "../../../styles/helpers/mixins";
+
+.user-manage {
+  &__image-wrap {
+    flex: 0 0 240px;
+
+    @include media(md) {
+      flex: 0 0 auto;
+    }
+  }
+
+  .form {
+    &__upload {
+      &__image {
+        width: 100px;
+        height: 100px;
+
+        &__img {
+          border-radius: 100px;
+        }
+      }
+    }
+  }
+}

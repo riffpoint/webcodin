@@ -1,0 +1,66 @@
+<div class="user-manage">
+  <h2 class="page-title">Users</h2>
+
+  <form [formGroup]="userForm" class="form" [ngClass]="{submitted: isSubmitted}" (ngSubmit)="onSubmit()">
+    <app-card>
+      <ng-container header-title>{{ title }}</ng-container>
+
+      <ng-container body>
+        <div class="row">
+          <div class="col-md user-manage__image-wrap">
+            <div class="form__upload">
+              <div class="form__upload__image">
+                <div class="form__upload__image__img"
+                  [style.backgroundImage]="'url(' + (userImagePreview ? userImagePreview : userImage) + ')'">
+                </div>
+                <button *ngIf="userImage || userImagePreview" (click)="clearImage()" type="button"
+                  class="form__upload__image__clear"><i class="las la-times"></i></button>
+              </div>
+              <div class="form__upload__btn">
+                <input type="file" id="avatar" formControlName="avatar" (change)="uploadPreview($event)"
+                  accept=".png,.jpg" />
+                <label type="button" for="avatar" class="btn btn--gray">Upload Avatar</label>
+              </div>
+              <div class="form__upload__description" [ngClass]="{'form__upload__description--danger' : userImageOverSize}">
+                Maximum upload image size: <span>1MB</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="row">
+              <div class="col-md">
+                <div class="form__group form__group--required">
+                  <label class="form__label" for="name">Name</label>
+                  <input [readonly]="getPermission()" type="text" id="name" class="form__element" formControlName="name" />
+                </div>
+
+                <div class="form__group form__group--required">
+                  <label class="form__label" for="email">Email</label>
+                  <input [readonly]="getPermission()" type="text" id="email" class="form__element" formControlName="email" />
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form__group form__group--required">
+                  <label class="form__label" for="surname">Surname</label>
+                  <input [readonly]="getPermission()" type="text" id="surname" class="form__element" formControlName="surname" />
+                </div>
+
+                <div class="form__group form__group--required">
+                  <label class="form__label" for="occupation">Occupation</label>
+                  <input [readonly]="getPermission()" type="text" id="occupation" class="form__element" formControlName="occupation" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container footer>
+        <div class="btn-group">
+          <button [disabled]="loading || getPermission()" class="btn btn--blue" type="submit">{{ submitBtnTitle }}</button>
+          <a class="btn btn--cancel" href="#" [routerLink]="loading ? [] : ['/admin/users']">Cancel</a>
+        </div>
+      </ng-container>
+    </app-card>
+  </form>
+</div>
