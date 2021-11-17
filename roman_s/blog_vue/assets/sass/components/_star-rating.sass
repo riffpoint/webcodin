@@ -1,0 +1,34 @@
+.star-rating
+  display: flex
+  justify-content: center
+  height: 18px
+  svg
+    width: 18px
+  .filled
+    fill: var(--filled-color)
+  .empty
+    fill: var(--empty-color)
+.rating-dark
+  --filled-color: #{$color-black}
+  --empty-color: #{$color-white}
+.rating-gold
+  --filled-color: #{$color-secondary}
+  --empty-color: #{$color-grey-01}
+
+.vue-star-rating
+  justify-content: center
+  .vue-star-rating-star
+    width: 18px
+    height: 18px
+    line-height: 1
+
+.vue-star-rating-rating-text
+  color: $color-primary
+  font-size: 15px
+  &::before
+    content: '('
+    color: $color-grey-01
+    margin-right: -4px
+  &::after
+    content: ')'
+    color: $color-grey-01

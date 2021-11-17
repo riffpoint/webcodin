@@ -1,0 +1,80 @@
+.main-footer
+  background: $color-black
+  color: $color-white
+  padding-top: 45px
+  margin-top: 1px
+  font-size: 14px
+  line-height: 1.71
+  @media screen and (max-width: $mobile)
+    padding-top: 24px
+    font-size: 16px
+
+.copyright
+  border-top: 1px solid $color-white
+  text-align: center
+  padding: 15px 0
+  margin-top: 50px
+  @media screen and (max-width: $mobile)
+    margin-top: 18px
+    font-size: 14px
+
+.footer-logo
+  margin-bottom: 4px
+  @media screen and (max-width: $mobile)
+    margin: 0 auto 10px
+    display: block
+
+.footer-title
+  font-size: 16px
+  text-transform: uppercase
+  font-weight: 600
+  line-height: 1.4
+
+.footer-column
+  @media screen and (max-width: $mobile)
+    text-align: center
+    padding-left: 24px
+    padding-right: 24px
+    padding-bottom: 0
+  &:not(:first-child)
+    padding-top: 33px
+    @media screen and (max-width: $mobile)
+      padding-top: 0
+
+.footer-menu
+  margin-bottom: 20px
+  @media screen and (max-width: $mobile)
+    margin-bottom: 16px
+
+.footer-menu-item
+  display: inline
+  &:not(:last-child)
+    &:after
+      content: '/'
+      margin: 0 6px
+
+.footer-menu-link
+  color: inherit
+  &:hover
+    color: inherit
+    text-decoration: underline
+
+.footer-text
+  @media screen and (max-width: $mobile)
+    max-width: 246px
+    margin: 0 auto
+  a
+    color: $color-primary
+    &:hover
+      color: $color-primary
+      text-decoration: underline
+
+.footer-text-left
+  max-width: 320px
+  @media screen and (max-width: $mobile)
+    display: none
+
+.footer-divider
+  margin: 0 0 20px
+  height: 1px
+  background: currentColor

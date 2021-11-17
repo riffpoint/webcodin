@@ -1,0 +1,41 @@
+.text-editor
+  border: 1px solid $color-border
+  border-radius: 4px
+
+.text-editor-menu-bar
+  padding: 5px
+  background: $color-border
+  display: flex
+  flex-wrap: wrap
+
+.text-editor-menu-btn
+  background: transparent
+  border: 0
+  padding: 0
+  margin: 0 5px 0 0
+  width: 28px
+  border-radius: 4px
+  cursor: pointer
+  font-size: 21px
+  transition: all .2s
+  &:hover,
+  &.is-active
+    background: rgba(0,0,0,.2)
+
+.text-editor-content
+  padding: 12px
+  font-size: 14px
+  background: $color-white
+  .ProseMirror-focused
+    outline: none
+  ul
+    padding-left: 20px
+    li
+      list-style: disc
+
+.post-edit-editor
+  .text-editor-content
+    min-height: 200px
+    display: flex
+    > div
+      width: 100%

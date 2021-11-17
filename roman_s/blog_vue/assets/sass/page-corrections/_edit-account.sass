@@ -1,0 +1,144 @@
+.edit-account-page
+  .banner-subtitle-small
+    max-width: 660px
+    line-height: 1.3
+  .account-tabs
+    .tab-content
+      padding: 20px 0
+    .tabs
+      li
+        @media screen and (max-width: $mobile)
+          width: 100%
+        a
+          font-size: 14px
+          padding: 15px 26px
+          border-bottom-color: $color-border
+          color: $color-black
+          @media screen and (max-width: $mobile)
+            margin-bottom: 0
+            border-top: 1px solid transparent
+            margin-top: -1px
+            position: relative
+          &:hover
+            text-decoration: none
+            background: $color-grey-03
+            @media screen and (max-width: $mobile)
+              background: transparent
+        &:first-child
+          a
+            @media screen and (max-width: $mobile)
+              border-top: 0
+              border-radius: 4px 4px 0 0;
+              margin-top: 0
+        &:last-child 
+          a
+            color: $color-red
+            @media screen and (max-width: $mobile)
+              border-bottom-color: transparent
+              margin-bottom: -1px
+              border-radius: 0 0 4px 4px;
+          &.is-active a
+            color: $color-red
+        &.is-active
+          a
+            color: $color-primary
+            background: $color-grey-03
+            border-bottom-color: currentColor
+            @media screen and (max-width: $mobile)
+              border-top-color: currentColor
+              &:before, &:after
+                content: ''
+                background: currentColor
+                height: 50%
+                width: 50px
+                position: absolute
+                right: 100%
+              &:before
+                top: 0
+                transform-origin: top right;
+                transform: skewX(30deg);
+              &:after
+                bottom: 0
+                transform-origin: bottom right;
+                transform: skewX(-30deg);
+      ul
+        @media screen and (max-width: $mobile)
+          flex-direction: column
+          border: 1px solid $color-primary
+          border-radius: 4px
+  .page-title
+    font-size: 24px
+    font-family: $title-font
+    color: $color-primary
+    font-weight: 600
+    text-transform: uppercase
+    padding-bottom: 20px
+    border-bottom: 1px solid $color-border
+    margin-bottom: 24px
+    line-height: 1
+  .limited-width
+    max-width: 190px
+    @media screen and (max-width: $mobile)
+      max-width: 100%
+  .save-btn
+    min-width: 120px
+  .short-info-text
+    padding: 16px 10px
+  .cancel-button,
+  .delete-btn
+    padding: 12px 17px
+  .cancel-button
+    @media screen and (max-width: $mobile)
+      padding: 0
+.sidebar-user-info
+  text-align: center
+  .avatar-wrap
+    width: 100px
+    margin: 0 auto 7px
+    img
+      width: 100%
+      height: 100px
+      border: 2px solid $color-white
+      border-radius: 1000px
+      display: block
+  .username
+    font-size: 16px
+    padding-bottom: 9px
+    border-bottom: 1px solid currentColor
+    margin-bottom: 11px
+.account-sidebar-body
+  padding: 20px 24px
+  border: 1px solid $color-border
+  border-top: 0
+  font-size: 14px
+  .sidebar-table
+    width: 100%
+    td
+      padding: 5px 0
+  .table-title
+    width: 100%
+    padding-left: 10px
+.account-sidebar-title
+  font-weight: 600
+  text-align: center
+  text-transform: uppercase
+  padding-bottom: 11px
+  border-bottom: 1px solid $color-border
+  margin-bottom: 16px
+  line-height: 1
+
+.sidebar-menu
+  margin-top: 22px
+.sidebar-menu-item
+  &:not(:last-child)
+    margin-bottom: 10px
+
+.account-subsection-title
+  font-family: $title-font
+  font-size: 20px
+  font-weight: 600
+  line-height: 1
+  margin: 32px 0 20px
+  padding-bottom: 20px
+  border-bottom: 1px solid $color-border
+  text-transform: uppercase

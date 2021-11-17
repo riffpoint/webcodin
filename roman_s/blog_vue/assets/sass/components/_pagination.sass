@@ -1,0 +1,50 @@
+.pagination
+  margin-top: 42px
+  &.is-centered
+    justify-content: center
+    align-items: center
+    &::before,
+    &::after
+      content: ''
+      flex: 1 1 0
+      height: 1px
+      background: $color-border
+    &::before
+      margin-right: 24px
+    &::after
+      margin-left: 24px
+      order: 3
+    .pagination-list
+      flex-grow: 0
+
+.pagination-previous, .pagination-next
+  color: $color-black
+  cursor: pointer
+  flex: 0 0 auto
+  &[disabled]
+    color: $color-grey-01
+    opacity: 1
+    pointer-events: none
+  &,&[disabled], &:hover, &:focus
+    background: transparent
+    border: 0
+.pagination-previous
+  margin-left: 0 !important
+.pagination-next
+  order: 3
+  margin-right: 0 !important
+.pagination-link
+  color: $color-black
+  background: transparent
+  border: 0
+  padding: 0
+  width: 20px
+  height: auto
+  margin: 5px
+  min-width: initial
+  font-size: 16px
+  font-weight: 600
+  cursor: pointer
+  &.is-current
+    background: transparent
+    color: $color-primary

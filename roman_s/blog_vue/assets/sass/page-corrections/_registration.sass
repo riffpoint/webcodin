@@ -1,0 +1,215 @@
+.registration-page
+  .banner
+    padding-bottom: 87px
+    @media screen and (max-width: $mobile)
+      padding: 21px 12px 18px;
+  .banner-left
+    padding: 0
+    @media screen and (max-width: $mobile)
+      margin-bottom: 0;
+  .title-text
+    font-size: 24px
+    font-weight: 600
+    font-family: $title-font
+    text-align: right
+    text-transform: uppercase
+    margin-bottom: 27px
+    span
+      padding: 5px
+  .btn-ghost-grey
+    min-width: 120px
+  .profile-photo-image
+    border: 0
+    display: block
+    box-shadow: none
+  .form-end-padding
+    padding-bottom: 158px
+    @media screen and (max-width: $mobile)
+      padding-bottom: 0;
+.registration-content
+  background: linear-gradient(to right, $color-grey 50%, $color-white 50%)
+  @media screen and (max-width: $desktop)
+    background: $color-white
+  .registration-content-wrapper
+    margin-bottom: 0
+// .registration-form-column,
+// .registration-form-text
+//   padding-top: 107px
+//   padding-bottom: 72px
+
+.registration-step-wrap
+  padding-top: 7px
+
+.registration-form-column
+  // background: $color-white
+  // padding-left: 24px
+  // @media screen and (max-width: $desktop)
+  //   padding: 37px 24px 36px
+.registration-form-text
+  // padding-right: 59px
+  // padding-left: 10px
+  // text-align: right
+  // @media screen and (max-width: $desktop)
+  //   padding: 70px 25px 0
+  @media screen and (max-width: $mobile)
+    display: none
+
+.registration-step-mobile
+  display: none
+  padding: 16px 23px
+  background: $color-primary
+  color: $color-white
+  .step-title
+    font-weight: 300
+  @media screen and (max-width: $desktop)
+    display: block
+
+
+.registration-steps
+  background: $color-black
+  z-index: 2
+  position: relative
+  > .container
+    @media screen and (max-width: $mobile)
+      padding: 0;
+  .columns
+    margin: 0
+  .step-title-wrap
+    position: relative
+    min-height: 114px
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    color: $color-grey-01
+    font-weight: 300
+    font-size: 18px
+    @media screen and (max-width: $mobile)
+      min-height: 50px
+      padding-top: 7px
+      padding-bottom: 7px
+      .step-title
+        display: none
+  .step-number
+    position: absolute
+    bottom: calc(0px - 31px)
+    left: calc(50% - 31px)
+    background: $color-black
+    width: 62px
+    height: 62px
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    border: 4px solid $color-white
+    border-radius: 100%
+    font-size: 26px
+    @media screen and (max-width: $mobile)
+      position: static
+      width: 35px
+      height: 35px
+      border: 0
+      font-size: 20px
+  .step-active
+    background: $color-primary
+    color: $color-white
+    .step-number
+      background: $color-white
+      color: $color-primary
+      border-color: $color-primary
+  .step-successful
+    color: $color-primary
+    .step-number
+      font-size: 0
+      &:after
+        content: ''
+        width: 24px
+        height: 12px
+        border: solid $color-primary
+        border-width: 0 0 2px 2px
+        transform: rotate(-45deg)
+        position: absolute
+        top: calc(50% - 9px)
+        left: calc(50% - 12px)
+        @media screen and (max-width: $mobile)
+          width: 21px
+          height: 9px
+          top: calc(50% - 6px)
+          left: calc(50% - 10px)
+.registration-step-subtitle
+  display: flex
+  align-items: center
+  margin-bottom: 20px
+  text-transform: uppercase
+  font-weight: 600
+  > span
+    padding: 0 0 0 18px
+.registration-form-title
+  font-family: $title-font
+  text-transform: uppercase
+  font-size: 30px
+  font-weight: 600
+  line-height: 1.2
+  margin-bottom: 34px
+  text-align: right
+.registration-form-subtitle
+  font-weight: 300
+  text-align: right
+  line-height: 1.7
+  margin-bottom: 20px
+
+.registration-step-wrap
+  .step-title
+    font-family: $title-font
+    font-size: 24px
+    font-weight: 600
+    line-height: 1.2
+    text-transform: uppercase
+    margin-bottom: 18px
+    padding-bottom: 20px
+    border-bottom: 1px solid $color-border
+    @media screen and (max-width: $mobile)
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+  .step-subsection-title
+    font-size: 20px
+    margin-top: 18px
+    @media screen and (max-width: $mobile)
+      margin-top: 12px
+      padding-left: 0;
+
+.registration-actions,
+.form-actions
+  display: flex
+  justify-content: space-between
+  margin-top: 23px
+  @media screen and (max-width: $mobile)
+    margin-top: 27px;
+  .next-btn
+    min-width: 216px
+    @media screen and (max-width: $mobile)
+      min-width: 120px
+  .btn-finish
+    min-width: 120px
+  .cancel-button
+    @media screen and (max-width: $mobile)
+      width: 40px
+      min-width: 40px
+      padding: 5px
+  .btn:not(:first-child)
+    margin-left: 9px;
+
+.image-load-wrap
+  .btn
+    min-width: 120px
+    margin: 10px 0
+  .form-notification
+    color: $color-grey-01
+    font-size: 13px
+    font-style: italic
+    span
+      margin-left: .5ch
+
+@media screen and (max-width: $mobile)
+  .bordered
+    .text-md
+      line-height: 1.2;

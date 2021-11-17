@@ -1,0 +1,446 @@
+input
+  -webkit-appearance: none
+  appearance: none
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button
+    display: none
+  &[readonly]
+    background: $color-primary-light
+  &::placeholder
+    color: $color-grey-02
+    font-style: italic
+textarea
+  resize: vertical
+.text-input
+  height: 40px
+  font-size: 14px
+  color: $color-black
+  padding: 0 12px
+  text-overflow: ellipsis
+  -webkit-appearance: none
+  appearance: none
+  border: 0
+  border-radius: 3px
+  width: 100%
+  &[readonly]
+    background: $color-primary-light
+.bordered-input
+  border: 1px solid $color-border
+.form-notification
+  font-style: italic
+  color: $color-grey-01
+  font-size: 13px
+  @media screen and (max-width: $mobile)
+    line-height: 1.2
+  .form-item-wrap > &
+    margin-top: 7px
+  .form-item-wrap > &:last-child
+    margin-bottom: -12px
+  .column > &:only-child
+    margin-top: -20px
+    @media screen and (max-width: $mobile)
+      margin-top: -11px
+  .column > &:last-child
+    margin-bottom: 6px
+    @media screen and (max-width: $mobile)
+      margin-bottom: 4px
+  .required-mark
+    &:after
+      content: '\A0'
+  span, b
+    &:before
+      content: '\20'
+.form-notification-bottom
+  text-align: right
+  border-top: 1px solid $color-border
+  padding-top: 7px
+  @media screen and (max-width: $mobile)
+    margin-top: 18px
+.form-item-wrap
+  @media screen and (max-width: $mobile)
+    margin-bottom: -5px
+
+.stripe-form
+  display: flex
+  > *
+    &:first-child
+      border-radius: 3px 0 0 3px
+    &:last-child
+      border-radius: 0 3px 3px 0
+.stripe-form-input.text-input
+  flex: 1 0 auto
+  height: 50px
+  padding: 0 25px
+  width: auto
+  font-size: 16px
+  @media screen and (max-width: $mobile)
+    height: 40px
+.stripe-form-btn
+  min-width: 50px
+  flex: 0 0 auto
+  cursor: pointer
+  @media screen and (max-width: $mobile)
+    min-width: 40px
+
+.primary-submit
+  border: 0
+  background: $color-primary
+  color: $color-white
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  font-size: 27px
+  transition: all .2s linear
+  &:hover
+    background: $color-secondary
+
+.form-label-top
+  display: block
+  width: 100%
+  font-size: 16px
+  font-weight: 600
+.form-item-input
+  margin-top: 6px
+  @media screen and (max-width: $mobile)
+    margin-top: 4px
+  .column > &:first-child
+    margin-top: 0
+.form-label-text
+  display: inline-block
+.form-label-subtitle
+  font-size: 14px
+  line-height: 1.5
+  display: block
+  font-style: italic
+.form-item-input-wrap
+  display: flex
+  align-items: center
+  margin-top: 6px
+  @media screen and ( max-width: $mobile)
+    margin-top: 4px
+  .form-item-input
+    margin-top: 0
+.form-item-input-info
+  font-size: 14px
+  &.info-right
+    margin-left: 12px
+
+.required-mark
+  font-size: 12px
+  font-weight: 600
+
+// Select
+.vs__dropdown-toggle
+  height: 40px
+  padding: 3px 0 3px 13px
+  border-radius: 3px
+  border-color: $color-border
+  font-size: 14px
+  color: $color-black
+  background: $color-white
+.vs__actions
+  width: 40px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  padding: 0
+  border-left: 1px solid $color-border
+  flex: 0 0 auto
+.vs__selected-options,
+.vs__search,
+.vs__search:focus,
+.vs__selected
+  margin: 0
+  padding: 0
+.select-caret
+  width: 10px
+  height: 10px
+  border: solid $color-black
+  border-width: 0 1px 1px 0
+  transform: translateY(-25%) rotate(45deg)
+  .vs--open &
+    transform: translateY(25%) rotate(225deg)
+.vs__clear
+  display: none
+.vs--single.vs--open .vs__selected
+  position: static
+.vs__dropdown-menu
+  li
+    font-size: 14px
+.vs__search[readonly]
+  background: transparent
+
+.select:not(.is-multiple):not(.is-loading)::after, .navbar-link:not(.is-arrowless)::after
+  content: '\f107'
+  font-family: 'Line Awesome Free'
+  font-weight: 900
+  border: 0;
+  transform: translateY(-50%)
+  color: $color-primary
+  width: auto
+  height: auto
+  right: 12px
+
+// Iconic input
+.iconic-input-wrap
+  position: relative
+  margin-top: 6px
+  display: block
+  @media screen and (max-width: $mobile)
+    margin-top: 4px
+  .form-item-input
+    margin-top: 0
+.input-icon-wrap
+  position: absolute
+  top: 3px
+  bottom: 3px
+  width: 40px
+  display: flex
+  align-items: center
+  justify-content: center
+  background: transparent
+  border: 0
+  padding: 0
+  font-size: 23px
+  &.is-disabled
+    color: $color-grey-01
+  svg
+    fill: currentColor
+    max-width: 23px
+.input-icon-wrap-lg
+  width: 50px
+.icon-left
+  .input-icon-left
+    left: 1px
+    border-right: 1px solid $color-border
+  .form-item-input
+    padding-left: 52px
+.icon-right
+  .input-icon-right
+    right: 1px
+    border-left: 1px solid $color-border
+  .form-item-input
+    padding-right: 52px
+.icon-lg
+  &.icon-right
+    .form-item-input
+      padding-right: 62px
+  &.icon-left
+    .form-item-input
+      padding-left: 62px
+.phone-flag
+  width: 30px
+  height: 20px
+  background: $color-disabled
+  &.country-swiss
+    background: url(/images/flags/switzerland.svg) center / contain no-repeat
+  &.country-liechtenstein
+    background: url(/images/flags/liechtenstein.svg) center / contain no-repeat
+
+// Input Counter
+.input-with-counter
+  position: relative
+  .text-editor-content
+    padding-bottom: 20px
+.input-counter
+  position: absolute
+  bottom: 5px
+  right: 5px
+  font-size: 14px
+  color: $color-grey-01
+  font-weight: 400
+
+  &.color-red
+    color: $color-red
+
+// Image load
+.image-load-wrap
+  .form-item-wrap
+    margin-bottom: 0
+.add-file-block
+  display: flex
+  align-items: center
+  margin-bottom: 20px
+  .btn
+    margin: 5px 0 7px
+    min-width: 120px
+  .form-notification
+    margin-top: 0
+    margin-bottom: 3px
+.profile-photo-wrap
+  display: flex
+  align-items: center
+  justify-content: space-between
+  text-transform: uppercase
+  font-size: 16px
+  font-weight: 600
+  margin-right: 24px
+  width: calc(25% - 18px)
+  max-width: 166px
+  border: 1px solid $color-border
+  border-radius: 4px
+  height: 150px
+  align-items: center
+  justify-content: center
+  @media screen and (max-width: $mobile)
+    width: calc(50% - 12px)
+    margin-right: 12px
+
+// Errors
+.form-item-error
+  .form-item-input,
+  .vs__dropdown-toggle
+    border-color: $color-red
+  .form-label-top
+    color: $color-red
+.error-message
+  color: $color-red
+  font-size: 13px
+  margin-top: 10px
+  .column.is-12 > &:first-child
+    margin-top: -20px
+
+// Radio buttons
+.radio-buttons-row
+  display: flex
+  align-items: center
+  align-content: center
+  flex-wrap: wrap
+  min-height: 40px
+  margin: 0 -15px
+  @media screen and (max-width: $mobile)
+    min-height: initial
+    margin-bottom: -10px
+.radio-input-label
+  display: inline-flex
+  align-items: center
+  font-size: 14px
+  cursor: pointer
+  &:before
+    content: ''
+    width: 24px
+    height: 24px
+    border: 1px solid $color-border
+    border-radius: 24px
+    align-self: flex-start
+    margin-right: 12px
+    flex: 0 0 auto
+.radio-input
+  position: absolute
+  top: 0
+  left: 0
+  &:checked + .radio-input-label:before
+    background: $color-primary
+    padding: 6px
+    background-clip: content-box
+.radio-input-wrap
+  position: relative
+  display: flex
+  align-items: center
+  margin: 0 15px
+  min-height: 40px
+  @media screen and (max-width: $mobile)
+    margin-bottom: 0
+  &.is-half
+    width: 50%
+    @media screen and (max-width: $mobile)
+      width: auto
+      margin-right: 25px
+
+// Checkboxes
+.checkbox-input
+  position: absolute
+  top: 0
+  left: 0
+  &:checked + .checkbox-input-label:after
+    opacity: 1
+.checkbox-list
+  display: flex
+  flex-direction: column
+  margin-top: 10px
+.checkbox-item-wrap
+  position: relative
+  &:not(:last-child)
+    margin-bottom: 12px
+.checkbox-input-label
+  display: flex
+  align-items: center
+  font-size: 14px
+  cursor: pointer
+  position: relative
+  > *:not(:first-child):before
+    content: '\20'
+  &:before
+    content: ''
+    width: 24px
+    height: 24px
+    border: 1px solid $color-border
+    align-self: flex-start
+    margin-right: 12px
+    flex-shrink: 0
+  &:after
+    content: ''
+    position: absolute
+    top: 7px
+    left: 6px
+    width: 14px
+    height: 6px
+    border: solid $color-primary
+    border-width: 0 0 1px 1px
+    transform: rotate(-45deg)
+    opacity: 0
+
+// Datepicker
+.datepicker
+  .dropdown .input[readonly]
+    background: transparent
+    height: 40px
+  .dropdown .input[readonly],
+  .select select
+    &:focus
+      box-shadow: none
+      border-color: $color-primary
+  .pagination.is-centered .pagination-next,
+  .pagination.is-centered .pagination-previous
+    &:focus
+      box-shadow: none
+      border-color: $color-primary
+  .has-text-primary
+    color: $color-primary !important
+  .select:not(.is-multiple):not(.is-loading)::after,
+  .datepicker-table .datepicker-body .datepicker-cell.is-today
+    border-color: $color-primary
+  .datepicker-table .datepicker-body .datepicker-cell.is-selected
+    background: $color-primary
+  .pagination
+    margin-top: 10px
+  .has-icons-left .icon,
+  .has-icons-right .icon
+    height: 100%
+    font-size: 28px
+
+// Carousel
+.b-slider
+  &.is-primary .b-slider-fill
+    background: $color-primary !important
+  .b-tooltip.is-primary
+    &::before
+      display: none
+    &::after
+      background: $color-primary
+      font-size: 10px
+      line-height: 1.3
+      padding: 0 5px
+      bottom: calc(100% + 2px)
+      border-radius: 4px
+      box-shadow: none
+  .b-slider-thumb-wrapper
+    .b-slider-thumb
+      width: 20px
+      height: 20px
+      border: 2px solid $color-white
+      background: $color-primary
+  .b-slider-track
+    background: $color-border
+    height: 6px

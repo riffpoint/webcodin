@@ -1,0 +1,110 @@
+.page-home
+  .container
+    @media screen and (max-width: $mobile)
+      padding: 0 24px
+
+  .divider
+    padding: 40px 0 48px
+  .search-submit
+    font-size: 30px
+    svg
+      width: 32px
+      @media screen and (max-width: $mobile)
+        width: 25px
+
+  .search-link
+    display: flex
+    align-items: center
+    text-transform: uppercase
+    font-weight: 600
+    .link-divider
+      flex: 1 0 auto
+      text-align: center
+      padding: 0 10px
+    @media screen and (max-width: $desktop)
+      margin-top: 20px
+      justify-content: center
+      .link-divider
+        flex: 0 0 auto
+        padding: 0
+        margin-right: 20px
+    @media screen and (max-width: $mobile)
+      flex-direction: column
+      margin-top: 0
+      .link-divider
+        display: inline-block
+        padding: 16px 0 21px
+        margin: 0
+        font-size: 14px
+    .btn
+      min-width: 193px
+      @media screen and (max-width: $mobile)
+        min-height: 40px
+        font-size: 14px
+        padding: 12px
+        width: 100%
+
+  .description-image
+    display: flex
+    img
+      display: block
+      object-fit: cover
+      object-position: left
+
+  .description-text
+    display: flex
+    height: 100%
+    align-items: center
+    flex-direction: column
+    justify-content: center
+    text-align: center
+    padding: 25px
+    @media screen and (max-width: $mobile)
+      padding: 30px 25px 36px
+
+    *
+      max-width: 690px
+    .btn
+      min-width: 166px
+
+  .banner
+    @media screen and (max-width: $mobile)
+      padding: 60px 0 77px
+      background-position: -212px 0;
+      background-color: rgba(0,0,0,.35);
+      background-blend-mode: color;
+  .banner-title
+    @media screen and (max-width: $mobile)
+      margin-bottom: 4px
+  .banner-subtitle
+    @media screen and (max-width: $mobile)
+      margin-bottom: 34px
+  .banner-left
+    @media screen and (max-width: $mobile)
+      padding: 0 0 35px
+      border-bottom: 1px solid $color-white
+      .btn
+        min-width: 277px
+        font-size: 14px
+        min-height: 40px
+        padding: 12px
+  .banner-right
+    @media screen and (max-width: $mobile)
+      flex-wrap: wrap
+      justify-content: center
+      .download-title
+        font-size: 16px
+        width: 100%
+        font-weight: 300
+        color: $color-white
+        text-align: center
+      .appstore-wrap
+        width: 140px
+        margin: 0
+        padding: 0 3px
+  .divider
+    @media screen and (max-width: $mobile)
+      padding-bottom: 36px
+
+  .tabs-wrap
+    padding-bottom: 60px

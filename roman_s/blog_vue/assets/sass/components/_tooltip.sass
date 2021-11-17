@@ -1,0 +1,31 @@
+.tooltip
+  position: absolute
+  width: 100%
+  left: 0
+  bottom: calc(100% + 10px)
+  z-index: 9
+  background: $color-primary
+  color: $color-white
+  padding: 10px
+  border-radius: 4px
+  text-align: center
+  font-weight: 300
+  font-size: 14px
+  pointer-events: none
+  opacity: 0
+  transform: translateY(10px)
+  transition: all .2s linear
+  &:before
+    content: ''
+    border: solid transparent
+    border-width: 8px 5px 0
+    border-top-color: $color-primary
+    position: absolute
+    top: 100%
+    left: calc(50% - 5px)
+
+.tootip-toggler
+  &:hover 
+    ~ .tooltip
+      opacity: 1
+      transform: translateY(0)

@@ -1,0 +1,57 @@
+.with-sidebar
+  > .container
+    >.columns
+      margin-top: 0
+      margin-bottom: 0
+
+  .sidebar
+    padding-top: 95px
+    padding-bottom: 72px
+    @media screen and (max-width: $desktop)
+      padding: 70px 25px 0
+      background: transparent
+      text-align: left
+    @media screen and (max-width: $mobile)
+      padding: 37px 24px
+  .main-content
+    padding-top: 95px
+    padding-bottom: 72px
+    background: $color-white
+    @media screen and (max-width: $desktop)
+      padding: 37px 24px 36px
+
+.sidebar-left
+  padding-right: 59px
+  padding-left: 10px
+  background: $color-grey
+  text-align: right
+
+.with-left-sidebar
+  background: linear-gradient(to right, $color-grey 50%, $color-white 50%)
+  @media screen and (max-width: $desktop)
+    background: $color-white
+  .main-content
+    padding-right: 12px
+    padding-left: 24px
+    @media screen and ( max-width: $mobile )
+      padding-right: 24px
+
+.sidebar-title
+  font-family: $title-font
+  font-size: 30px
+  font-weight: 600
+  line-height: 1.2
+  margin-bottom: 34px
+  text-transform: uppercase
+.sidebar-subtitle
+  font-weight: 400
+
+.sidebar-content
+  font-weight: 300
+  ul
+    text-align: left
+
+.sidebar-image
+  display: block
+  margin: 24px auto
+  max-width: 80%

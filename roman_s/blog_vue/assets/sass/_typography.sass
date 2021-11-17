@@ -1,0 +1,168 @@
+a
+  color: $color-primary
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+    color: $color-primary
+.section-title
+  font-size: 32px
+  font-weight: 600
+  font-family: $title-font
+  text-align: center
+  text-transform: uppercase
+  margin-bottom: 15px
+  letter-spacing: 3px
+  line-height: 1
+  @media screen and (max-width: $mobile)
+    font-size: 26px
+    letter-spacing: 0
+
+  &-small
+    font-weight: 400
+    font-size: 20px
+    margin-bottom: 10px
+  &-middle
+    font-size: 30px
+    @media screen and (max-width: $mobile)
+      font-size: 24px
+
+.section-subtitle
+  font-weight: 300
+  font-size: 18px
+  text-align: center
+  margin-bottom: 33px
+  @media screen and (max-width: $mobile)
+    font-size: 16px
+    margin-bottom: 28px
+
+.color-primary
+  color: $color-primary
+
+.color-black
+  color: $color-black
+
+.color-secondary
+  color: $color-secondary
+
+.color-white
+  color: $color-white
+
+.color-red
+  color: $color-red
+
+.color-grey-01
+  color: $color-grey-01
+
+.text-center
+  text-align: center
+
+.text-content
+  p:not(:last-child)
+    margin-bottom: 20px
+  h1, h2, h3, h4, h5, h6
+    &:not(:first-child)
+      margin-top: 30px
+  ul, ol
+    &:not(:last-child)
+      margin-bottom: 20px
+  ul
+    li
+      display: block
+      &:before
+        content: '\2022'
+        margin-right: 5px
+        font-weight: 400
+  ol
+    li
+      list-style: inside decimal
+      display: list-item
+
+.text-paragraph
+  &:not(:last-child)
+    margin-bottom: 5px
+    @media screen and (max-width: $mobile)
+      font-size: 16px;
+
+.desciption-text-title
+  margin-bottom: 35px
+  line-height: 1.33
+  letter-spacing: 0
+  @media screen and (max-width: $mobile)
+    margin-bottom: 20px
+
+.text-lowercase
+  text-transform: lowercase
+.text-uppercase
+  text-transform: uppercase
+
+.desciption-text-preview
+  font-size: 18px
+  font-weight: 300
+  margin-bottom: 40px
+  line-height: 1.7
+  @media screen and (max-width: $mobile)
+    font-size: 16px
+    line-height: 1.5
+    margin-bottom: 20px
+.text-xlg
+  font-size: 20px
+.text-lg
+  font-size: 18px
+.text-md
+  font-size: 16px
+.text-sm
+  font-size: 14px
+.text-xsm
+  font-size: 13px
+.text-xxsm
+  font-size: 12px
+.router-link
+  color: $color-black
+  &:hover,
+  &.active
+    text-decoration: none
+    color: $color-primary
+
+.title
+  font-family: $title-font
+  font-weight: 600
+  line-height: 1.2
+  text-transform: uppercase
+  &:not(:last-child)
+    margin-bottom: 0
+.title-md
+  font-size: 24px
+.title-sm
+  font-size: 20px
+  
+.subtitle-md
+  font-size: 16px
+  font-style: italic
+
+.subtitle-sm
+  font-size: 14px
+  font-weight: 600
+
+.text-table
+  font-size: 14px
+  td
+    padding: 5px
+
+.pause-dates-row
+  font-size: 16px
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  @media screen and (max-width: $desktop)
+    justify-content: flex-start
+
+.text-link
+  color: $color-primary
+  text-decoration: none
+  padding: 0
+  border: 0
+  background: transparent
+  display: inline
+  font: inherit
+  &:hover
+    text-decoration: underline

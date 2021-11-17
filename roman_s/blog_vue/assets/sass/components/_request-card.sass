@@ -1,0 +1,328 @@
+.request-card-wrap
+  &:not(:last-child)
+    margin-bottom: 24px
+.request-card
+  border: 1px solid $color-border
+  padding: 12px 0
+  position: relative
+  @media screen and ( max-width: $desktop )
+    padding: 0
+  .mobile-collapse-toggler
+    background: transparent
+    border: 0
+    padding: 5px
+    font-size: 18px
+    cursor: pointer
+    margin-left: 12px
+    transition: transform .2s linear
+    @media screen and ( min-width: 767px )
+      display: none
+    &.is-active
+      transform: rotate(180deg)
+
+.request-card-head
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin: 0 24px
+  padding: 12px 0
+  border-bottom: 1px solid $color-border
+  @media screen and ( max-width: $mobile )
+    flex-direction: column
+    padding: 20px 0
+    &.no-timer
+      border-bottom: 0
+      padding-bottom: 0
+      .request-head-right
+        padding: 0
+
+.request-object-title
+  font-size: 18px
+  font-weight: 300
+
+.request-head-right
+  font-size: 12px
+  font-weight: 600
+  margin-left: 24px
+  display: flex
+  align-items: center
+  @media screen and ( max-width: $mobile )
+    margin: 0
+    padding: 20px 0 0
+
+  span
+    text-transform: uppercase
+
+  .color-primary,
+  .color-red
+    font-size: 16px
+
+.request-head-left
+  @media screen and ( max-width: $mobile )
+    width: 100%
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding-bottom: 10px
+    border-bottom: 1px solid $color-border
+
+.request-status-indicator
+  height: 24px
+  margin-left: 20px
+  border-radius: 24px
+  text-transform: uppercase
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  color: $color-white
+  padding: 3px 15px
+  min-width: 80px
+  flex: 0 0 auto
+
+  @media screen and ( max-width: $mobile )
+    position: absolute
+    top: 13px
+    right: 13px
+
+  &.bg-black
+    background: $color-black
+  &.bg-secondary
+    background: $color-secondary
+  &.bg-primary
+    background: $color-primary
+  &.bg-red
+    background: $color-red
+  &.bg-grey
+    background: $color-grey
+    color: $color-black
+  &.bg-grey-01
+    background: $color-grey-01
+
+.request-card-body
+  display: flex
+  padding: 24px
+  align-items: flex-start
+  @media screen and ( max-width: $mobile )
+    padding-top: 6px
+
+.object-image-wrap
+  border: 1px solid $color-border
+  width: 236px
+  flex: 0 0 auto
+  margin-right: 24px
+  @media screen and ( max-width: $desktop )
+    width: 100%
+    border: 0
+  img
+    width: 100%
+    display: block
+    @media screen and ( max-width: $desktop )
+      margin: 0 auto
+.request-body-info
+  flex: 1 1 auto
+.request-info-top
+  font-size: 14px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  width: 100%
+  @media screen and ( min-width: $mobile )
+    display: flex !important
+  @media screen and ( max-width: $mobile )
+    flex-direction: column
+    width: 100%
+    padding-bottom: 23px
+    border-bottom: 1px solid $color-border
+    > *
+      width: 100%
+      display: flex
+      padding: 6px 0
+      margin: 0
+      &:nth-child(odd)
+        background: $color-grey
+      > *
+        padding: 5px 12px
+        flex: 1 1 0
+        &:not(:last-child)
+          border-right: 1px solid $color-border
+          font-weight: 600
+  .object-rating
+    display: flex
+    align-items: center
+    margin-left: 12px
+    @media screen and ( max-width: $mobile )
+      margin: 0
+  .vue-star-rating
+    margin-left: 6px
+    @media screen and ( max-width: $mobile )
+      margin: 0
+      justify-content: flex-start
+
+.request-info-middle
+  padding: 18px 0 22px
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -12px -24px
+  @media screen and ( max-width: $mobile )
+    margin: 0 -1px -2px
+.request-middle-box
+  background: $color-grey
+  padding: 10px
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin: 0 12px 24px
+  font-weight: 600
+  width: calc(25% - 24px)
+  line-height: 1.25
+  @media screen and ( max-width: $mobile )
+    width: calc(50% - 2px)
+    margin: 0 1px 2px
+    padding: 8px
+.request-middle-box-title
+  font-size: 14px
+  color: $color-grey-01
+  margin-bottom: 6px
+  text-transform: uppercase
+  @media screen and ( max-width: $mobile )
+    font-size: 12px
+    margin-bottom: 0
+.request-middle-box-content
+  font-size: 16px
+  @media screen and ( max-width: $mobile )
+    font-size: 14px
+.request-info-actions
+  border-top: 1px solid $color-border
+  padding-top: 12px
+  display: flex
+  justify-content: space-between
+  @media screen and ( max-width: $mobile )
+    flex-direction: column
+    padding-top: 24px
+    margin-bottom: -12px
+    .actions-left,
+    .actions-right
+      width: calc(100% + 24px)
+      display: flex
+      margin: 0 -12px
+      flex-wrap: wrap
+.request-action-btn
+  font-size: 12px
+  padding: 8px 14px
+  min-width: 120px
+  @media screen and ( max-width: $mobile )
+    flex: 1 1 auto
+    width: calc(50% - 24px)
+    margin: 0 12px 12px
+
+.request-card-footer
+  padding: 12px 24px 0
+  border-top: 1px solid $color-border
+  display: flex
+  min-height: 76px
+  @media screen and ( max-width: $mobile )
+    flex-direction: column
+    padding: 24px 24px 12px
+    min-height: initial
+  .user-short-info,
+  .user-actions
+    width: 236px
+    flex: 0 0 auto
+    @media screen and ( max-width: $mobile )
+      width: 100%
+  .user-short-info
+    border-right: 1px solid $color-border
+    margin-right: 24px
+    padding-top: 12px
+    @media screen and ( max-width: $mobile )
+      margin: 0 0 12px
+      border: 0
+      display: flex
+      align-items: center
+      justify-content: space-between
+      padding-top: 0
+  .short-info-wrap
+    display: flex
+    align-items: center
+  .avatar-wrap
+    width: 40px
+    height: 40px
+    display: flex
+    border-radius: 40px
+    overflow: hidden
+    margin-right: 11px
+    background: $color-grey
+    img
+      width: 100%
+  .user-name
+    font-size: 16px
+    font-weight: 600
+    color: $color-primary
+    display: block
+    line-height: 1.25
+  .user-actions
+    border-left: 1px solid $color-border
+    padding: 16px 0 0 24px
+    margin-left: 24px
+    @media screen and ( max-width: $mobile )
+      margin: 0
+      border: 0
+      width: calc(100% + 24px)
+      padding: 0
+      margin: 0 -12px
+    .btn
+      width: 100%
+      @media screen and ( max-width: $mobile )
+        width: calc(100% - 24px)
+  .user-full-info
+    flex: 1 1 auto
+    @media screen and ( max-width: $mobile )
+      order: 2
+  .user-full-info-inner
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 12px 0
+    @media screen and ( min-width: $mobile )
+      display: flex !important
+  .collapse-toggler
+    border: solid $color-border
+    border-width: 0 0 1px
+    width: 100%
+    background: transparent
+    padding: 0 0 10px
+    font-size: 14px
+    color: $color-black
+    text-transform: uppercase
+    font-weight: 600
+    display: flex
+    align-items: center
+    justify-content: space-between
+    cursor: pointer
+    transition: all .15s linear
+    &::after
+      content: '\f105'
+      font-family: 'Line Awesome Free'
+      font-weight: 900
+      font-size: 18px
+      transition: all .15s linear
+    &.open
+      &::after
+        color: $color-primary
+        transform: rotate(90deg)
+    &:disabled::after
+      display: none
+  .collapse-wrap
+    margin-bottom: 10px
+    &:last-child
+      margin-bottom: 0
+      .collapse-toggler
+        &:not(.open)
+          border-bottom-color: transparent
+          padding-bottom: 0
+  .collapse-inner
+    padding: 12px 0
+    font-size: 14px
+    .user-info-name
+      margin-bottom: 6px

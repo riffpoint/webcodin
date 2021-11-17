@@ -1,0 +1,155 @@
+.b-tabs
+  background: inherit
+.tabs-wrap
+  .tabs:not(.is-toggle)
+    ul
+      display: flex
+      border-bottom-color: $color-border
+      a
+        padding: 24px
+        font-size: 14px
+        border-bottom-color: $color-border
+        &:hover
+          text-decoration: none
+          background: #fbfbfb
+          border-bottom-color: $color-border
+      .is-active
+        a
+          color: $color-primary
+          border-bottom-color: currentColor
+          background: #fbfbfb
+  .tabs.is-toggle
+    background: inherit
+    display: flex
+    justify-content: center
+    align-items: center
+    &:before,
+    &:after
+      content: ''
+      flex: 1 0 0
+      height: 1px
+      background: $color-border
+      @media screen and (max-width: $mobile)
+        display: none
+    > ul
+      background: inherit
+      justify-content: center
+      align-items: stretch
+      padding: 0 12px
+      flex: 0 1 auto
+      @media screen and (max-width: $mobile)
+        padding: 0
+      li
+        padding: 0 12px
+        @media screen and (max-width: $mobile)
+          padding: 0
+          flex: 1 0 0
+          &:first-child
+            a
+              border-radius: 4px 0 0 4px
+          &:last-child
+            a
+              border-radius: 0 4px 4px 0
+        &.is-active
+          a
+            background: $color-primary
+            color: $color-white
+        a
+          border-radius: 3px
+          padding: 9px 20px
+          text-transform: uppercase
+          border: 0
+          background: $color-border
+          color: $color-black
+          font-size: 14px
+          font-weight: 600
+          transition: all .2s linear
+          white-space: initial
+          text-align: center
+          height: 100%
+          &:hover
+            background: $color-primary
+            color: $color-white
+            text-decoration: none
+          @media screen and (max-width: $mobile)
+            font-size: 13px
+            padding: 8px 16px 10px
+            line-height: 1.2
+
+  .tab-content
+    padding: 48px 0 0
+    @media screen and (max-width: $mobile)
+      padding: 24px
+
+.tabs-mobile-toggler
+  justify-content: center
+  align-items: center
+  width: 40px
+  height: 40px
+  border: 1px solid $color-border
+  border-radius: 4px
+  background: transparent
+  font-size: 24px
+  cursor: pointer
+  &.open
+    border-color: $color-primary
+    color: $color-primary
+
+.tabs-mobile-toggler
+  flex: 0 0 auto
+  margin-left: 24px
+.request-tabs
+  .tabs:not(.is-toggle)
+    ul
+      @media screen and (max-width: $desktop)
+        flex-direction: column
+        border-bottom: 0
+        li
+          width: 100%
+          a
+            justify-content: flex-start
+            padding: 0 23px
+            height: 0
+            transition: padding .15s linear
+            overflow: hidden
+            color: transparent
+            &:hover
+              background: transparent
+              color: $color-primary
+          &.is-active
+            a
+              background: transparent
+      li
+        a
+          @media screen and ( max-width: $mobile )
+            .rentings-tab-label
+              width: 100%
+              display: flex
+              justify-content: space-between
+              align-items: center
+    a
+      .badge
+        margin-left: 10px
+  &.tabs-shown .tabs:not(.is-toggle)
+    @media screen and ( max-width: $desktop )
+      ul li
+        a
+          padding: 14px 23px
+          height: auto
+          color: inherit
+          margin: 0
+        &.is-active
+          color: $color-primary
+
+.b-tabs.is-vertical
+  .tab-content
+    background: $color-grey-03
+  .tabs
+    li
+      a
+        border-bottom: 0
+        border-radius: 4px 0 0 4px
+      &.is-active a
+        background: $color-grey-03
+        color: $color-primary
+

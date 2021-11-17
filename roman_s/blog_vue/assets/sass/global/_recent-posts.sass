@@ -1,0 +1,19 @@
+.recent-post
+  &:not(:last-child)
+    margin-bottom: 10px
+  list-style: none
+  font-size: 14px
+
+.recent-post-link
+  color: $color-black
+  font-weight: 600
+  &::before
+    content: '-'
+    margin: 0 5px
+    position: relative
+    top: -1px
+    color: $color-black
+  
+  &:hover
+    text-decoration: none
+

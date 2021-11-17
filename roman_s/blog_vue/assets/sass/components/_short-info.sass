@@ -1,0 +1,39 @@
+.short-info
+  min-height: 50px
+  width: 100%
+  display: flex
+  padding: 5px 18px
+  font-size: 14px
+  border: 1px solid $color-border
+  border-radius: 3px
+  &.icon-left
+    padding-left: 0
+    .short-info-icon
+      border-right: 1px solid $color-border
+  &.icon-right
+    padding-right: 0
+    .short-info-icon
+      border-left: 1px solid $color-border
+.short-info-icon
+  display: flex
+  flex: 0 0 auto
+  width: 50px
+  align-items: center
+  justify-content: center
+  margin-right: 13px
+  font-size: 28px
+
+.icon-wrap-round
+  border: 2px solid currentColor
+  border-radius: 24px
+  width: 24px
+  height: 24px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+
+.short-info-text
+  padding: 8px 0
+  align-self: center
+  @media screen and (max-width: $mobile)
+    padding: 14px 0;

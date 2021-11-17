@@ -1,0 +1,50 @@
+// Grow
+.grow-enter-active,
+.grow-leave-active
+  transition: .3s
+
+
+.grow-enter,
+.grow-leave-to
+  opacity: 0
+  transform: scale(.6)
+
+
+// Slide-fade
+.slide-fade-enter-active,
+.slide-fade-leave-active
+  transition: .3s
+
+.slide-fade-enter,
+.slide-fade-leave-to
+  opacity: 0
+  transform: translateX(150px)
+
+// Popup
+.popup-enter-active,
+.popup-leave-active,
+.popup-enter-active .transition-element,
+.popup-leave-active .transition-element
+  transition: .3s
+
+
+.popup-enter,
+.popup-leave-to,
+.popup-enter .transition-element,
+.popup-leave-to .transition-element
+  opacity: 0
+
+.popup-enter .transition-element,
+.popup-leave-to .transition-element
+  transform: scale(.6)
+
+// Submenu
+.submenu-enter-active,
+.submenu-leave-active
+.submenu-move
+  transition: .1s
+
+.submenu-enter,
+.submenu-leave-to
+  opacity: 0
+  transform: translateX(20px)

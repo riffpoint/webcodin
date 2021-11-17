@@ -1,0 +1,128 @@
+.object-details-page
+  .object-info-wrap
+    font-size: 16px
+  .object-actions-wrap
+    font-size: 14px
+    line-height: 1
+    @media screen and ( max-width: $mobile )
+      flex-direction: column
+      align-items: flex-start
+    .actions
+      display: flex
+      @media screen and ( max-width: $mobile )
+        margin-top: 24px
+      a
+        min-width: 200px
+    .vue-star-rating
+      vertical-align: bottom
+
+  .process-description
+    font-size: 16px
+    font-weight: 300
+    letter-spacing: -0.1px
+
+  .object-breadcrumbs
+    .angle-right
+      transform: translate(-25%, -25%) rotate(45deg)
+      margin: 0 8px
+
+  .sidebar-wrap
+    font-size: 14px
+    .btn-sm
+      min-width: 200px
+  .insurance-block
+    padding: 30px
+    font-size: 16px
+    .btn-sm
+      min-width: 120px
+  .sidebar-cancellation-info
+    line-height: 1
+    b
+      font-size: 16px
+  .separated-table-row
+    display: flex
+  .separated-table-cell
+    display: flex
+    justify-content: center
+    flex-direction: column
+    padding-top: 6px
+    padding-bottom: 6px
+    flex: 1 1 0
+    &:last-child
+      max-width: 108px
+      align-items: center
+  .renting-dates
+    display: flex
+    margin-left: -6px
+    margin-right: -6px
+    .input-wrap
+      margin: 0 6px
+      flex-grow: 1
+      .input
+        border-color: $color-border
+        box-shadow: none
+        padding-left: 10px
+        padding-right: 40px
+        font-size: 14px
+      .control > .icon
+        width: 40px
+        left: auto
+        right: 0
+        border-left: 1px solid $color-border
+        height: 30px
+        top: 5px
+        color: $color-primary
+  .message-textarea
+    height: 150px
+    resize: vertical
+    display: block
+    margin-bottom: 22px
+  .send-btn
+    min-width: 140px
+  .reviews-title-wrap
+    @media screen and ( max-width: $mobile )
+      flex-direction: column
+      align-items: flex-start
+      > .vue-star-rating
+        margin-top: 12px
+
+  .object-descrition
+    p
+      &:empty
+        height: 1.5em
+    ul
+      padding-left: 20px
+      li
+        list-style: disc
+.sidebar-table-row
+  display: flex
+.pricing-table
+  font-size: 14px
+  .sidebar-table-cell
+    display: flex
+    flex-direction: column
+    justify-content: center
+    flex: 1 1 auto
+    &:last-child
+      max-width: 108px
+.btn.favorites-btn
+  width: 40px
+  height: 40px
+  font-size: 22px
+  border: 1px solid currentColor
+  color: $color-disabled
+  padding: 0
+  background: transparent
+  &:hover
+    border-color: $color-primary
+  &:focus
+    outline: none
+  &:active
+    box-shadow: inset 0 0 7px rgba(0,0,0,.1)
+  svg
+    fill: currentColor
+    width: 22px
+  &.active
+    color: $color-primary
+  @media screen and ( max-width: $mobile )
+    margin-left: 0 !important

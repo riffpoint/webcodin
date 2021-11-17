@@ -1,0 +1,57 @@
+.locale-switcher
+  border: 1px solid $color-border
+  border-radius: 3px
+  background: $color-white
+  width: 60px
+  display: flex
+  position: relative
+  // &:hover
+  //   .locale-dropdown
+  //     display: block
+
+.locale-button
+  padding: 3px 19px 3px 4px
+  height: 28px
+  position: relative
+  background: 4px center / 34px 22px no-repeat
+  font-size: 0
+  border: 0
+  width: 100%
+  cursor: pointer
+  &:focus, &:focus
+    border: 0
+    outline: 0
+    background-color: transparent
+  &:not(.locale-active):hover
+    border: 0
+    outline: 0
+    background-color: $color-grey
+
+.locale-active
+  &:after
+    content: ''
+    width: 6px
+    height: 6px
+    position: absolute
+    top: calc(50% - 4px)
+    right: 6px
+    border: solid $color-black
+    border-width: 0 1px 1px 0
+    transform: rotate(45deg)
+
+.locale-dropdown
+  position: absolute
+  top: calc(100% - 3px)
+  left: -1px
+  width: calc(100% + 2px)
+  border: 1px solid $color-border
+  border-top: 0
+  border-radius: 0 0 2px 2px
+  background: $color-white
+  z-index: 2
+  // display: none
+
+.locale-en
+  background-image: url(/images/flags/gb.svg)
+.locale-de
+  background-image: url(/images/flags/de.svg)

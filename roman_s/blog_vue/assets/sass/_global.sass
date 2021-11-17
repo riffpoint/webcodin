@@ -1,0 +1,159 @@
+body
+  font-family: 'Open Sans', sans-serif
+  color: $color-black
+  font-size: 18px
+  ::-webkit-scrollbar
+    width: .5em
+    height: .5em
+  ::-webkit-scrollbar-track
+    background: transparent
+  ::-webkit-scrollbar-thumb
+    background: #d8d8d8
+    border-radius: 8px
+body, button, input, select, textarea
+  font-family: 'Open Sans', sans-serif
+b
+  font-weight: 600
+.scroll-disabled
+  overflow: hidden
+  height: 100%
+  &.user-menu-active
+    @media screen and ( min-width: $mobile )
+      overflow: visible
+
+.page-content
+  padding: 72px 0
+
+.page-wrapper
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+
+.page-content-wrap
+  flex: 1 0 auto
+  display: flex
+  flex-direction: column
+  z-index: 2
+  .with-sidebar
+    flex: 1 0 auto
+    display: flex
+    > .container,
+    .sidebar,
+    .main-content
+      display: flex
+  &.loading
+    align-items: center
+    justify-content: center
+
+.sidebar-layout-columns
+  min-width: 100%
+
+.sidebar,
+.main-content
+  flex-direction: column
+
+// Grid
+.container
+  max-width: $container-main
+  margin: 0 auto
+  padding: 0 12px
+  width: 100%
+.container-narrow
+  max-width: $container-narrow
+.container-md
+  max-width: $container-md
+.no-vertical-spacing
+  padding-top: 0
+  padding-bottom: 0
+  margin-bottom: 0
+  margin-top: 0
+
+.main-content
+  padding-top: 95px
+  padding-bottom: 72px
+  @media screen and (max-width: $desktop)
+    padding-top: 37px
+    padding-bottom: 36px
+
+// Colors
+.primary-bg
+  background: $color-primary
+  color: $color-white
+
+  .social-link
+    background: $color-white
+    color: $color-primary
+    &:hover
+      background: $color-black
+      color: $color-white
+
+.secondary-bg
+  background: $color-secondary
+  color: $color-white
+
+.black-bg
+  background: $color-black
+  color: $color-white
+
+.grey-bg
+  background: $color-grey
+
+.grey-01-bg
+  background: $color-grey-01
+  color: $color-white
+
+.white-bg
+  background: $color-white
+
+.red-bg-01
+  background: $color-red-01
+  color: $color-white
+
+// Sections
+.content-section
+  padding: 48px 0
+  @media screen and (max-width: $mobile)
+    padding: 24px 0
+  &.small-spacing
+    padding: 18px 0
+    @media screen and (max-width: $mobile)
+      padding: 10px 0
+  &.large-spacing
+    padding: 66px 0
+    @media screen and (max-width: $mobile)
+      padding: 45px 0
+
+.insurance-logo
+  padding: 40px 20px
+.insurance-logo-red-bg
+  background: $color-red-01
+
+// Icons
+.icon-angle-right,
+.icon-angle-left
+  display: inline-flex
+  justify-content: center
+  align-items: center
+  height: 1em
+  &::before
+    content: ''
+    height: .75em
+    width: .75em
+    border: solid currentColor
+    border-width: 2px 2px 0 0
+    transform: translateX(-25%) rotate(45deg)
+.icon-angle-left
+  &::before
+    transform: translateX(25%) rotate(-135deg)
+
+.dot-left
+  &::before
+    content: '\2022'
+    color: $color-primary
+    font-size: 150%
+    line-height: 14px
+    height: 1em
+    display: inline-block
+    top: .15em
+    position: relative
+    margin-right: 4px

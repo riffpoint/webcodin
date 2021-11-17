@@ -1,0 +1,68 @@
+.popup-overlay
+  display: flex
+  align-items: center
+  justify-content: center
+  position: fixed
+  width: 100vw
+  height: 100vh
+  background: rgba(0,0,0,.6)
+  top: 0
+  left: 0
+  z-index: 9999
+
+.popup-content
+  background: $color-white
+  border-radius: 10px
+  padding: 25px
+  max-width: 70%
+  max-height: 70%
+  min-width: 300px
+  min-height: 200px
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  @media screen and (max-width: $mobile)
+    width: 90%
+  .section-title
+    letter-spacing: 0
+
+.popup-content-inner
+  overflow: auto
+  max-width: 100%
+  flex: 0 1 auto
+
+.popup-close
+  position: absolute
+  right: 5px
+  top: 5px
+  font-size: 0
+  width: 30px
+  height: 30px
+  border-radius: 3px
+  border: 0
+  background: transparent
+  cursor: pointer
+  transition: all .2s linear
+  &:focus, &:active
+    outline: none
+  &:hover
+    transform: scale(.8)
+  &:before,
+  &:after
+    content: ''
+    position: absolute
+    top: calc(50% - 1px)
+    left: 5px
+    width: 20px
+    height: 2px
+    background: $color-primary
+    transition: inherit
+  &:before
+    transform: rotate(45deg)
+  &:after
+    transform: rotate(-45deg)
+
+.popup-action-button
+  margin: 0 6px
