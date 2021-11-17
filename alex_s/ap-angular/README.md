@@ -1,7 +1,7 @@
 # Angular Admin Panel
 
 Angular Admin Panel is full responsiv web application. Based on Angular 10 and Firebase database. It also include registration\authorization and allow create and manage posts.\
-Preview of this template available [here](http://slicing.qs-demo.com/angular-admin/)
+Preview of this template available [here](http://s4.devcodin.com/self-education/ng-admin-panel)
 
 ![Angular Admin Panel](./src/assets/images/site/screenshot.png)
 
@@ -60,7 +60,7 @@ angular-admin-panel/
 
 ``` bash
 # clone the repo
-$ git clone https://github.com/riffpoint/webcodin/tree/master/alex_s/ap-angular
+$ git clone https://scm.devcodin.com/webcodin-wordpress/angular-admin-panel
 
 # go into the directory
 $ cd angular-admin-panel

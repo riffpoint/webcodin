@@ -14,14 +14,14 @@ import { ActivatedRoute } from '@angular/router';
 export class PostsComponent implements OnInit, OnDestroy {
   users: User[];
   posts: Post[];
-  postDeleteLoading: boolean = false;
+  postDeleteLoading = false;
   usersSubscription: any;
   postsSubscription: any;
   routeParamsSubscription: any;
 
-  currentPage: number = 1;
-  postsPerPage: number = 5;
-  searchText: string = '';
+  currentPage = 1;
+  postsPerPage = 5;
+  searchText = '';
   sortedBy: object = {
     title: null,
     owner: null,
@@ -43,7 +43,7 @@ export class PostsComponent implements OnInit, OnDestroy {
         this.postsSubscription = this.postService.GetAllPosts().subscribe(posts => {
           if (params.uid) {
             this.posts = posts.filter(post => {
-              return post.owner === params.uid
+              return post.owner === params.uid;
             });
           } else {
             this.posts = posts;
@@ -54,12 +54,11 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    console.log(this.routeParamsSubscription);
     this.usersSubscription.unsubscribe();
     this.postsSubscription.unsubscribe();
 
-    if (this.routeParamsSubscription) {
-      this.routeParamsSubscription.unsubscribe();
-    }
+    this.routeParamsSubscription.unsubscribe();
   }
 
   getNameOfPostOwner(ownerId: string): string {
@@ -74,7 +73,7 @@ export class PostsComponent implements OnInit, OnDestroy {
     return name;
   }
 
-  deletePost(id: string) {
+  deletePost(id: string): void {
     this.postDeleteLoading = true;
 
     this.postService.DeletePost(id).then(() => {
@@ -83,8 +82,8 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   sortPosts(fieldName: string): void {
-    let result = this.globalService.SortItems(this.posts, fieldName, this.sortedBy);
-    this.posts = result['items'];
-    this.sortedBy = result['sortedBy'];
+    const result = this.globalService.SortItems(this.posts, fieldName, this.sortedBy);
+    this.posts = result.items;
+    this.sortedBy = result.sortedBy;
   }
 }

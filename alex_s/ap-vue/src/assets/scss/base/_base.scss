@@ -1,0 +1,38 @@
+@import "../helpers/variables";
+@import "../helpers/mixins";
+
+html,
+body {
+  @include media(md) {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+
+.page-title {
+  font-family: "RobotoMedium";
+  font-size: 1.4286rem;
+  line-height: 1.2;
+  color: $default;
+  padding: 0 0 36px;
+
+  @include media(md) {
+    padding-bottom: 17px;
+  }
+}
+
+@include media(md) {
+  .container-fluid,
+  [class*=" col"],
+  [class*=" col-"],
+  [class^="col-"],
+  [class^="col"] {
+    padding-left: $grid-gutter-width-mb / 2;
+    padding-right: $grid-gutter-width-mb / 2;
+  }
+
+  .row {
+    margin-left: -#{$grid-gutter-width-mb / 2};
+    margin-right: -#{$grid-gutter-width-mb / 2};
+  }
+}

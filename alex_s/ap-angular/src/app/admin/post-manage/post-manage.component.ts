@@ -15,14 +15,14 @@ export class PostManageComponent implements OnInit, OnDestroy {
   submitBtnTitle: string;
   postType: string;
 
-  noImage: string = 'assets/images/site/no-image.svg';
+  noImage = 'assets/images/site/no-image.svg';
   postImagePreview: string | ArrayBuffer;
   postImage: string | ArrayBuffer = this.noImage;
   postImageFile: File | null;
-  postImageDelete: boolean = false;
-  postImageOverSize: boolean = false;
-  isSubmitted: boolean = false;
-  loading: boolean = false;
+  postImageDelete = false;
+  postImageOverSize = false;
+  isSubmitted = false;
+  loading = false;
   post: Post;
 
   postsSubscription: any;
@@ -42,8 +42,7 @@ export class PostManageComponent implements OnInit, OnDestroy {
     title: ['', Validators.required],
     excerpt: [''],
     description: ['', Validators.required]
-  })
-
+  });
 
   ngOnInit(): void {
     this.routeUrlSubscription = this.route.url.subscribe(data => {
@@ -79,17 +78,17 @@ export class PostManageComponent implements OnInit, OnDestroy {
     }
   }
 
-  uploadPreview(event) {
+  uploadPreview(event): void {
     this.postImageFile = event.target.files[0];
     this.postImageOverSize = false;
     const size = this.globalService.FormatBytes(this.postImageFile.size);
 
-    if ( (size.type === "Bytes" || size.type === "KB") && size.number < 1024) {
+    if ( (size.type === 'Bytes' || size.type === 'KB') && size.number < 1024) {
       const reader: FileReader = new FileReader();
 
       reader.onloadend = () => {
         this.postImagePreview = reader.result;
-      }
+      };
 
       reader.readAsDataURL(this.postImageFile);
     } else {
@@ -99,7 +98,7 @@ export class PostManageComponent implements OnInit, OnDestroy {
     }
   }
 
-  clearImage() {
+  clearImage(): void {
     if (this.post.photoURL) {
       this.postImageDelete = true;
     }
@@ -116,7 +115,7 @@ export class PostManageComponent implements OnInit, OnDestroy {
         title: post.title,
         excerpt: post.excerpt,
         description: post.description
-      }
+      };
 
       this.postImage = post.photoURL ? post.photoURL : this.noImage;
       this.postForm.controls.title.setValue(post.title);
@@ -128,16 +127,16 @@ export class PostManageComponent implements OnInit, OnDestroy {
         title: '',
         excerpt: '',
         description: ''
-      }
+      };
 
       this.postImage = this.noImage;
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.isSubmitted = true;
 
-    if (this.postForm.status !== "INVALID") {
+    if (this.postForm.status !== 'INVALID') {
       this.loading = true;
 
       this.post.title = this.postForm.controls.title.value;
@@ -145,14 +144,14 @@ export class PostManageComponent implements OnInit, OnDestroy {
       this.post.description = this.postForm.controls.description.value;
 
       this.postService.SetPostData(this.post)
-        .then(() => {
+        .then((id: string) => {
           if (this.postImageFile) {
-            this.globalService.UploadImage(this.postImageFile, this.post.uid, 'posts-images', 'posts').then(() => {
+            this.globalService.UploadImage(this.postImageFile, id, 'posts-images', 'posts').then(() => {
               this.loading = false;
               this.router.navigate(['admin/posts']);
-            })
+            });
           } else if (this.postImageDelete) {
-            this.globalService.DeleteImage(this.post.uid, 'posts-images', 'posts').then(() => {
+            this.globalService.DeleteImage(id, 'posts-images', 'posts').then(() => {
               this.loading = false;
               this.postImageDelete = false;
               this.router.navigate(['admin/posts']);

@@ -6,21 +6,21 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  @Output() onToggleSidebar = new EventEmitter<boolean>();
-  @Output() onToggleMobileSidebar = new EventEmitter<boolean>();
-  @Input() sidebarIsHidden: boolean = false;
-  @Input() sidebarMobileIsHidden: boolean = false;
+  @Output() ToggleSidebar = new EventEmitter<boolean>();
+  @Output() ToggleMobileSidebar = new EventEmitter<boolean>();
+  @Input() sidebarIsHidden = false;
+  @Input() sidebarMobileIsHidden = false;
 
   constructor() { }
 
-  toggleSidebar(): void {
-    this.onToggleSidebar.emit();
+  onToggleSidebar(): void {
+    this.ToggleSidebar.emit();
   }
-  toggleMobileSidebar(): void {
-    this.onToggleMobileSidebar.emit();
+  onToggleMobileSidebar(): void {
+    this.ToggleMobileSidebar.emit();
   }
 
-  toggleSubMenu(event: any) {
+  toggleSubMenu(event: any): void {
     event.stopPropagation();
     event.preventDefault();
 

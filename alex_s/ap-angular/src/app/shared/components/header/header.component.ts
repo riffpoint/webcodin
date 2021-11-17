@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, OnDestroy, Output, Input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, OnDestroy, Output, Input, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { User } from '../../services/auth/user';
@@ -7,29 +7,34 @@ import { User } from '../../services/auth/user';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  host: {
-    '(document:click)': 'closeNav($event)',
-  }
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  @Input() isHidden: boolean = false;
-  @Output() onToggleMobileSidebar = new EventEmitter<boolean>();
-  noImage: string = 'assets/images/site/no-image-white.svg';
+  @Input() isHidden = false;
+  @Output() ToggleMobileSidebar = new EventEmitter<boolean>();
+  noImage = 'assets/images/site/no-image-white.svg';
   userName: string;
   userEmail: string;
   userAvatar: string = this.noImage;
   userId: string;
-  navIsHidden: boolean = true;
+  navIsHidden = true;
   userSubscribe: any;
 
   constructor(
     public authService: AuthService,
     private router: Router,
-    private _eref: ElementRef
+    private eref: ElementRef
   ) {
     router.events.pipe().subscribe(() => {
       this.navIsHidden = true;
-    })
+    });
+  }
+
+  @HostListener('document:click', ['$event']) closeNav(event: Event): void {
+    if (
+      !this.eref.nativeElement.querySelector('.header__user').contains(event.target)
+    ) {
+      this.navIsHidden = true;
+    }
   }
 
   ngOnInit(): void {
@@ -48,20 +53,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userSubscribe.unsubscribe();
   }
 
-  closeNav(event: Event): void {
-
-    if (
-      !this._eref.nativeElement.querySelector('.header__user').contains(event.target)
-    ) {
-      this.navIsHidden = true;
-    }
-  }
-
   toggleNav(): void {
     this.navIsHidden = !this.navIsHidden;
   }
 
-  toggleSidebar(): void {
-    this.onToggleMobileSidebar.emit();
+  onToggleSidebar(): void {
+    this.ToggleMobileSidebar.emit();
   }
 }

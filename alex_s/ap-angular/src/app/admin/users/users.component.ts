@@ -9,10 +9,10 @@ import { User } from '../../shared/services/user/user';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit, OnDestroy {
-  noImage: string = 'assets/images/site/no-image-white.svg';
-  currentPage: number = 1;
-  usersPerPage: number = 5;
-  searchText: string = '';
+  noImage = 'assets/images/site/no-image-white.svg';
+  currentPage = 1;
+  usersPerPage = 5;
+  searchText = '';
 
   usersSubscription: any;
   users: User[];
@@ -40,13 +40,12 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   sortUsers(fieldName: string): void {
-    let result = this.globalService.SortItems(this.users, fieldName, this.sortedBy);
-    this.users = result['items'];
-    this.sortedBy = result['sortedBy'];
+    const result = this.globalService.SortItems(this.users, fieldName, this.sortedBy);
+    this.users = result.items;
+    this.sortedBy = result.sortedBy;
   }
 
   onSearchTextChange(): void {
-      console.log('change')
       this.currentPage = 1;
   }
 }

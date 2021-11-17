@@ -14,16 +14,16 @@ export class GlobalService {
     private afStorage: AngularFireStorage
   ) { }
 
-  SortItems(items: Array<object>, fieldName: string, sortedBy: object): object {
+  SortItems(items: Array<object>, fieldName: string, sortedBy: object): any {
     const dir = !!sortedBy[fieldName];
     const mod = dir ? -1 : 1;
     let sortedItems: Array<object>;
-    let newSortedBy = this.setProperyToNull(sortedBy);
+    const newSortedBy = this.setProperyToNull(sortedBy);
     newSortedBy[fieldName] = !dir;
 
     sortedItems = items.sort((a, b): any => {
-      var fieldA = a[fieldName].toUpperCase();
-      var fieldB = b[fieldName].toUpperCase();
+      const fieldA = a[fieldName] ? a[fieldName].toUpperCase() : '';
+      const fieldB = b[fieldName] ? b[fieldName].toUpperCase() : '';
 
       if (fieldA < fieldB) {
         return -1 * mod;
@@ -38,61 +38,64 @@ export class GlobalService {
     return {
       items: sortedItems,
       sortedBy: newSortedBy
-    }
+    };
   }
 
-  UploadImage(file: File, id: string, folder: string, collection: string) {
+  UploadImage(file: File, id: string, folder: string, collection: string): Promise<void> {
     this.uploadRef = this.afStorage.ref(`${folder}/${id}`);
 
     return this.uploadTask = this.uploadRef.put(file).then(snapshot => {
       this.getDownloadUrl(snapshot, id, collection);
-    })
+    });
   }
 
-  DeleteImage(id: string, folder: string, collection: string) {
+  DeleteImage(id: string, folder: string, collection: string): Promise<void> {
     this.uploadRef = this.afStorage.ref(`${folder}/${id}`);
 
     return this.uploadTask = this.uploadRef.delete().toPromise().then(() => {
       this.setImageUrl('', id, collection);
-    })
+    });
   }
 
-  FormatBytes(a, b = 2) {
-    if (0 === a) return { number: 0, type: "Bytes" };
+  FormatBytes(a, b = 2): any {
+    if (0 === a) {
+      return { number: 0, type: 'Bytes' };
+    }
 
-    const c = 0 > b ? 0 : b, d = Math.floor(Math.log(a) / Math.log(1024));
+    const c = 0 > b ? 0 : b;
+    const d = Math.floor(Math.log(a) / Math.log(1024));
 
     return {
       number: parseFloat((a / Math.pow(1024, d)).toFixed(c)),
-      type: ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"][d]
-    }
+      type: ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][d]
+    };
   }
 
-  private getDownloadUrl(snapshot, id: string, collection: string) {
+  private getDownloadUrl(snapshot, id: string, collection: string): Promise<void> {
     return snapshot.ref.getDownloadURL().then(url => {
       this.setImageUrl(url, id, collection);
-    })
+    });
   }
 
-  private setImageUrl(url: string, id: string, collection: string) {
+  private setImageUrl(url: string, id: string, collection: string): Promise<void> {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`${collection}/${id}`);
 
     const userData = {
       photoURL: url
-    }
+    };
 
     return userRef.set(userData, {
       merge: true
-    })
+    });
   }
 
-  private setProperyToNull(obj: object) {
-    let newObj = obj
+  private setProperyToNull<T>(obj: T): T {
+    const newObj = obj;
 
     Object.keys(obj).forEach(k => {
-      newObj[k] = null
-    })
+      newObj[k] = null;
+    });
 
-    return newObj
+    return newObj;
   }
 }

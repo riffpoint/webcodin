@@ -9,8 +9,8 @@ import { MustMatch } from '../../shared/validators/must-match.validator';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  isSubmitted: boolean = false;
-  loading: boolean = false;
+  isSubmitted = false;
+  loading = false;
 
   constructor(private fb: FormBuilder, public authService: AuthService) { }
 
@@ -20,15 +20,15 @@ export class SignUpComponent implements OnInit {
     passwordConfirm: ['', Validators.required]
   }, {
     validator: MustMatch('password', 'passwordConfirm')
-  })
+  });
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.isSubmitted = true;
 
-    if (this.userForm.status !== "INVALID") {
+    if (this.userForm.status !== 'INVALID') {
       this.loading = true;
 
       this.authService.SignUp(this.userForm.controls.email.value, this.userForm.controls.password.value)

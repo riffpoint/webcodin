@@ -1,0 +1,172 @@
+.header {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 0 $grid-gutter-width / 2;
+  background: $white;
+  position: relative;
+  z-index: 100;
+  transition: all 0.2s ease;
+
+  @include media(md) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 0 0 50px;
+
+    &--is-hidden {
+      top: -50px;
+    }
+  }
+
+  .container-fluid {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 75px;
+
+    @include media(md) {
+      height: 50px;
+    }
+  }
+
+  &__sidebar-toggle {
+    display: none;
+
+    @include media(md) {
+      display: block;
+      font-size: 26px;
+      line-height: 28px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 100%;
+      background: none;
+      -webkit-transition-property: color;
+      transition-property: color;
+      border: none;
+      border-right: 1px solid #ebedf2;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+  }
+
+  &__user {
+    &__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      background: $brand-color-1 no-repeat center / cover;
+      cursor: pointer;
+    }
+
+    &__nav {
+      position: absolute;
+      top: 91px;
+      right: 99999px;
+      width: 350px;
+      max-width: 350px;
+      background: $white;
+      opacity: 0;
+      transition: right 0s ease 0.2s, opacity 0.2s ease;
+      border-radius: 2px;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+      z-index: 100;
+
+      @include media(md) {
+        top: 66px;
+        width: calc(100% - 30px);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        right: 20px;
+        top: -30px;
+        border: 15px solid transparent;
+        border-bottom-color: $brand-color-1;
+      }
+
+      &__header {
+        display: flex;
+        align-items: center;
+        background: $brand-color-1;
+        color: $white;
+        padding: 25px;
+        border-radius: 2px 2px 0 0;
+
+        a {
+          font-size: 0.857rem;
+          line-height: 12px;
+          color: $white;
+          border-bottom: 1px solid transparent;
+          transition: all 0.2s ease;
+
+          &:hover {
+            border-bottom-color: $white;
+          }
+        }
+
+        &__avatar {
+          width: 70px;
+          height: 70px;
+          border-radius: 70px;
+          background: $brand-color-1 no-repeat center / cover;
+          border: 2px solid $white;
+        }
+
+        &__info {
+          padding: 0 0 0 14px;
+        }
+      }
+
+      &--visible {
+        right: 15px;
+        opacity: 1;
+        transition: right 0s ease, opacity 0.2s ease;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 25px;
+      }
+
+      li {
+        padding: 12px 0;
+      }
+
+      &__item {
+        font-family: "PoppinsRegular";
+        font-size: 1.1429rem;
+        color: $gray-2;
+        padding: 0 0 0 32px;
+        background: 0;
+        position: relative;
+        cursor: pointer;
+
+        &__icon {
+          font-size: 21px;
+          line-height: 19px;
+          position: absolute;
+          left: 0;
+          top: -3px;
+          width: 21px;
+          height: 21px;
+        }
+
+        &--active,
+        &:hover {
+          color: $brand-color-1;
+        }
+      }
+
+      &__footer {
+        border-top: 1px solid $border-color;
+        padding: 25px;
+        text-align: right;
+      }
+    }
+  }
+}

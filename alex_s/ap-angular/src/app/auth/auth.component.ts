@@ -8,7 +8,7 @@ import { AlertService } from '../shared/components/alert/alert.service';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit, OnDestroy {
-  authType: String = '';
+  authType = '';
   authSubscribe: any;
 
   constructor(

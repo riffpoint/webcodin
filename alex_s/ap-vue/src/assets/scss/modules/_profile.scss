@@ -1,0 +1,172 @@
+.profile {
+  &__sidebar {
+    flex: 0 0 380px + $grid-gutter-width;
+    margin: 0 0 $grid-gutter-width;
+
+    @include media(md) {
+      margin-bottom: $grid-gutter-width-mb;
+    }
+  }
+
+  &__content {
+    &__left {
+      flex: 0 0 210px + $grid-gutter-width;
+    }
+  }
+
+  &__card {
+    background: $white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+    &__header {
+      padding: 20px $grid-gutter-width;
+      display: flex;
+      justify-content: center;
+      min-height: 200px;
+      background: $brand-color-1;
+      border-radius: 2px;
+      color: $white;
+
+      &__inner {
+        text-align: center;
+      }
+    }
+
+    &__user-avatar {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 10px;
+
+      &__img {
+        border-radius: 100px;
+        height: 100%;
+        width: 100%;
+        background: $gray-3 no-repeat center / cover;
+      }
+    }
+
+    &__user-name {
+      font-family: "PoppinsMedium";
+      font-size: 1.2857rem;
+    }
+
+    &__nav {
+      padding: $grid-gutter-width;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      &__item {
+        display: block;
+        color: $gray-2;
+        padding: 5px 0 5px 30px;
+        transition: all 0.2s ease;
+        position: relative;
+
+        .fa {
+          font-size: 1.2rem;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          margin: -1px 0 0;
+        }
+
+        &--active,
+        &:hover {
+          color: $brand-color-1;
+        }
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: flex-end;
+      padding: $grid-gutter-width;
+      border-top: 1px solid $main-bg;
+    }
+  }
+
+  .form {
+    &__element {
+      min-width: 200px;
+    }
+
+    &__upload {
+      border: 1px solid $border-color;
+      border-radius: 2px;
+      padding: 20px;
+      background: $white;
+      text-align: center;
+
+      &__avatar {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 20px;
+        position: relative;
+
+        &__img {
+          height: 100%;
+          width: 100%;
+          border-radius: 100px;
+          background: $gray-3 no-repeat center / cover;
+
+          &--default {
+            background-size: 50px;
+          }
+        }
+
+        &__clear {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          width: 20px;
+          height: 20px;
+          border-radius: 20px;
+          background: $brand-color-1;
+          color: $white;
+          text-align: center;
+          padding: 0;
+          margin: 0;
+          cursor: pointer;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: $brand-color-2;
+          }
+        }
+      }
+
+      &__btn {
+        position: relative;
+
+        input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 0;
+          opacity: 0;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+
+      &__description {
+        font-size: 0.8571rem;
+        line-height: 1.2;
+        color: $input-color;
+        padding: 10px 0 0;
+
+        span {
+          color: $danger;
+        }
+      }
+    }
+  }
+}

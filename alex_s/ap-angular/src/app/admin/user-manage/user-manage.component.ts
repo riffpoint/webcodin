@@ -15,15 +15,16 @@ export class UserManageComponent implements OnInit, OnDestroy {
   submitBtnTitle: string;
   userType: string;
 
-  noImage: string = 'assets/images/site/no-image.svg';
+  noImage = 'assets/images/site/no-image.svg';
   userImagePreview: string | ArrayBuffer;
   userImage: string | ArrayBuffer = this.noImage;
   userImageFile: File | null;
-  userImageDelete: boolean = false;
-  userImageOverSize: boolean = false;
-  isSubmitted: boolean = false;
-  loading: boolean = false;
+  userImageDelete = false;
+  userImageOverSize = false;
+  isSubmitted = false;
+  loading = false;
   user: User;
+  currentUserId: string;
   currentUserRoles: Array<string> = [];
 
   currentUserSubscription: any;
@@ -50,14 +51,13 @@ export class UserManageComponent implements OnInit, OnDestroy {
     surname: ['', [Validators.required]],
     email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
     occupation: ['', [Validators.required]],
-  })
-
+  });
 
   ngOnInit(): void {
     this.loading = true;
-    const id = JSON.parse(localStorage.getItem('user')).uid;
+    this.currentUserId = JSON.parse(localStorage.getItem('user')).uid;
 
-    this.currentUserSubscription = this.userService.GetUser(id)
+    this.currentUserSubscription = this.userService.GetUser(this.currentUserId)
       .subscribe((user: User) => {
         this.currentUserRoles = user.roles;
 
@@ -98,17 +98,17 @@ export class UserManageComponent implements OnInit, OnDestroy {
     }
   }
 
-  uploadPreview(event) {
+  uploadPreview(event): void {
     this.userImageFile = event.target.files[0];
     this.userImageOverSize = false;
     const size = this.globalService.FormatBytes(this.userImageFile.size);
 
-    if ( (size.type === "Bytes" || size.type === "KB") && size.number < 1024) {
+    if ((size.type === 'Bytes' || size.type === 'KB') && size.number < 1024) {
       const reader: FileReader = new FileReader();
 
       reader.onloadend = () => {
         this.userImagePreview = reader.result;
-      }
+      };
 
       reader.readAsDataURL(this.userImageFile);
     } else {
@@ -118,7 +118,7 @@ export class UserManageComponent implements OnInit, OnDestroy {
     }
   }
 
-  clearImage() {
+  clearImage(): void {
     if (this.user.photoURL) {
       this.userImageDelete = true;
     }
@@ -142,14 +142,18 @@ export class UserManageComponent implements OnInit, OnDestroy {
     }
   }
 
-  getPermission() {
-    return !this.currentUserRoles.includes('ROLE_SUPER_ADMIN');
+  getPermission(): boolean {
+    if (this.user?.uid === this.currentUserId) {
+      return false;
+    } else {
+      return !this.currentUserRoles.includes('ROLE_SUPER_ADMIN');
+    }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.isSubmitted = true;
 
-    if (this.userForm.status !== "INVALID") {
+    if (this.userForm.status !== 'INVALID') {
       this.loading = true;
 
       this.user.name = this.userForm.controls.name.value;
@@ -162,7 +166,7 @@ export class UserManageComponent implements OnInit, OnDestroy {
             this.globalService.UploadImage(this.userImageFile, this.user.uid, 'avatars', 'users').then(() => {
               this.loading = false;
               this.router.navigate(['admin/users']);
-            })
+            });
           } else if (this.userImageDelete) {
             this.globalService.DeleteImage(this.user.uid, 'avatars', 'users').then(() => {
               this.loading = false;

@@ -10,7 +10,7 @@ import { Post } from '../../shared/services/post/post';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  noImage: string = 'assets/images/site/no-image-white.svg';
+  noImage = 'assets/images/site/no-image-white.svg';
   users: User[] = [];
   posts: Post[] = [];
   usersSubscription: any;

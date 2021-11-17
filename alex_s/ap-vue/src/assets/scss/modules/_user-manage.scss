@@ -1,0 +1,26 @@
+.user-manage {
+  &__image-wrap {
+    flex: 0 0 240px;
+
+    @include media(md) {
+      flex: 0 0 auto;
+    }
+  }
+
+  .card__body {
+    min-height: 210px;
+  }
+
+  .form {
+    &__upload {
+      &__image {
+        width: 100px;
+        height: 100px;
+
+        &__img {
+          border-radius: 100px;
+        }
+      }
+    }
+  }
+}

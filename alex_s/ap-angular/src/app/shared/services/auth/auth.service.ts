@@ -41,14 +41,21 @@ export class AuthService {
       }
 
       this.loading.next(false);
-    })
+    });
   }
 
   // Sign in with email/password
-  SignIn(email, password) {
+  SignIn(email, password): Promise<void> {
     return this.afAuth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
       return this.afAuth.signInWithEmailAndPassword(email, password)
         .then((result) => {
+          localStorage.setItem('user', JSON.stringify(result.user));
+
+          if (!result.user.emailVerified) {
+            this.alertService.warn('Email is not verified', 'Please verify your email', this.alertOptions);
+            return;
+          }
+
           this.SetUserData(result.user, false).then(() => {
             this.ngZone.run(() => {
               this.router.navigate(['admin/dashboard']);
@@ -63,12 +70,12 @@ export class AuthService {
           };
 
           this.alertService.warn(title[error.code], error.message, this.alertOptions);
-        })
-    })
+        });
+    });
   }
 
   // Sign up with email/password
-  SignUp(email, password) {
+  SignUp(email, password): Promise<void> {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign
@@ -85,29 +92,29 @@ export class AuthService {
         };
 
         this.alertService.warn(title[error.code], error.message, this.alertOptions);
-      })
+      });
   }
 
   // Send email verfificaiton when new user sign up
-  SendVerificationMail() {
+  SendVerificationMail(): Promise<void> {
     return this.afAuth.currentUser.then(u => u.sendEmailVerification())
       .then(() => {
         this.router.navigate(['verify-email-address']);
-      })
+      });
   }
 
   // Reset Forggot password
-  ForgotPassword(passwordResetEmail) {
+  ForgotPassword(passwordResetEmail): Promise<void> {
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        this.alertService.warn('', 'Password reset email sent, check your inbox.', this.alertOptions);
+        this.alertService.success('', 'Password reset email sent, check your inbox.', this.alertOptions);
       }).catch((error) => {
         this.alertService.warn('', error, this.alertOptions);
-      })
+      });
   }
 
   // Change password
-  ChangePassword(passwordOld, email, password) {
+  ChangePassword(passwordOld, email, password): Promise<void> {
     return this.afAuth.signInWithEmailAndPassword(email, passwordOld)
       .then(() => {
         return this.afAuth.currentUser.then(user => {
@@ -130,7 +137,7 @@ export class AuthService {
         };
 
         this.alertService.warn(title[error.code], error.message, this.alertOptions);
-      })
+      });
   }
 
   // Returns true when user is looged in and email is verified
@@ -142,7 +149,7 @@ export class AuthService {
   /* Setting up user data when sign in with username/password,
   sign up with username/password and sign in with social auth
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user, isNewUser) {
+  SetUserData(user, isNewUser): Promise<void> {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
     const userData: User = {
@@ -150,7 +157,7 @@ export class AuthService {
       email: user.email,
       emailVerified: user.emailVerified,
       createdAt: user.metadata.creationTime
-    }
+    };
 
     if (isNewUser) {
       userData.roles = ['ROLE_ADMIN'];
@@ -158,15 +165,14 @@ export class AuthService {
 
     return userRef.set(userData, {
       merge: true
-    })
+    });
   }
 
   // Sign out
-  SignOut() {
+  SignOut(): Promise<void> {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['sign-in']);
-    })
+    });
   }
-
 }

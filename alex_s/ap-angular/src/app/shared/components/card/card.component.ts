@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() footerIsShow: boolean = true;
+  @Input() footerIsShow = true;
 
   constructor() { }
 

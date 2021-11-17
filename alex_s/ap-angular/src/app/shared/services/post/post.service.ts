@@ -21,7 +21,7 @@ export class PostService {
     this.postsCollection = afs.collection<Post>('posts');
   }
 
-  GetAllPosts() {
+  GetAllPosts(): Observable<Post[]> {
     this.posts = this.postsCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Post;
@@ -34,15 +34,15 @@ export class PostService {
     return this.posts;
   }
 
-  GetPost(id: string) {
+  GetPost(id: string): Observable<unknown> {
     return this.postsCollection.doc(id).valueChanges();
   }
 
-  DeletePost(id: string) {
+  DeletePost(id: string): Promise<void> {
     return this.postsCollection.doc(id).delete();
   }
 
-  SetPostData(post: Post) {
+  SetPostData(post: Post): Promise<string> {
     return this.afAuth.currentUser.then(user => {
       const postData: Post = {
         uid: post.uid ? post.uid : this.afs.createId(),
@@ -59,7 +59,9 @@ export class PostService {
 
       return this.postsCollection.doc(postData.uid).set(postData, {
         merge: true
-      })
+      }).then(() => {
+        return postData.uid;
+      });
     });
   }
 }

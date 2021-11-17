@@ -1,15 +1,15 @@
-<alert></alert>
+<app-alert></app-alert>
 
 <div class="admin" [class.admin--sidebar-hidden]="sidebarIsHidden">
   <app-sidebar
     [sidebarIsHidden]="sidebarIsHidden"
     [sidebarMobileIsHidden]="sidebarMobileIsHidden"
-    (onToggleSidebar)="onToggleSidebar()"
-    (onToggleMobileSidebar)="onToggleMobileSidebar()"
+    (ToggleSidebar)="onToggleSidebar()"
+    (ToggleMobileSidebar)="onToggleMobileSidebar()"
   ></app-sidebar>
 
   <div *ngIf="!loading" class="admin__content">
-    <app-header [isHidden]="headerMobileIsHidden" (onToggleMobileSidebar)="onToggleMobileSidebar()"></app-header>
+    <app-header [isHidden]="headerMobileIsHidden" (ToggleMobileSidebar)="onToggleMobileSidebar()"></app-header>
 
     <div class="admin__content__inner">
       <div class="container-fluid">

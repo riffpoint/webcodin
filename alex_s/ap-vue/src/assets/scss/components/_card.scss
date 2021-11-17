@@ -1,0 +1,45 @@
+.card {
+  background: $white;
+  margin: 0 0 $grid-gutter-width;
+
+  @include media(md) {
+    margin-bottom: 15px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px $grid-gutter-width;
+
+    @include media(md) {
+      padding: 17px 15px;
+    }
+  }
+
+  &__title {
+    font-family: "RobotoMedium";
+    font-size: 1.2857rem;
+    line-height: 1.2;
+    color: $default;
+  }
+
+  &__body {
+    padding: 22px $grid-gutter-width;
+    border-top: 1px solid $main-bg;
+    position: relative;
+
+    @include media(md) {
+      padding: 15px;
+    }
+  }
+
+  &__footer {
+    padding: $grid-gutter-width;
+    border-top: 1px solid $main-bg;
+
+    @include media(md) {
+      padding: 15px;
+    }
+  }
+}

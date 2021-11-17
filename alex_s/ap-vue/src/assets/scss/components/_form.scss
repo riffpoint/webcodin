@@ -1,0 +1,158 @@
+.form {
+  &__upload {
+    border: 1px solid $border-color;
+    border-radius: 2px;
+    padding: 20px;
+    background: $white;
+    text-align: center;
+
+    @include media(md) {
+      padding: 15px;
+    }
+
+    &__image {
+      margin: 0 auto 20px;
+      position: relative;
+
+      @include media(md) {
+        margin-bottom: 15px;
+      }
+
+      &__img {
+        height: 100%;
+        width: 100%;
+        background: $gray-3 no-repeat center / contain;
+
+        &--default {
+          background-size: 50px;
+        }
+      }
+
+      &__clear {
+        font-size: 13px;
+        line-height: 21px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        background: $brand-color-1;
+        color: $white;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: $brand-color-2;
+        }
+      }
+    }
+
+    &__description {
+      font-size: 0.8571rem;
+      line-height: 1.2;
+      color: $input-color;
+      padding: 10px 0 0;
+
+      &--danger {
+        color: $danger;
+      }
+
+      span {
+        color: $danger;
+      }
+    }
+
+    &__btn {
+      position: relative;
+
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        opacity: 0;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  &__group {
+    padding: 8px 0;
+
+    &--required {
+      .form__label {
+        &::after {
+          content: " *";
+          color: $danger;
+        }
+      }
+    }
+  }
+
+  &__submit {
+    padding: 20px 0;
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__element {
+    font-family: "PoppinsRegular";
+    font-size: 1rem;
+    line-height: 40px;
+    display: block;
+    width: 100%;
+    border: 1px solid $border-color;
+    height: 40px;
+    border-radius: 2px;
+    box-shadow: inset 0 40px 0 $white;
+    padding: 0 $input-padding;
+    transition: all 0.2s ease;
+
+    &.is-invalid,
+    &.is-dirty.is-invalid {
+      border-color: $danger;
+    }
+
+    @at-root textarea#{&} {
+      line-height: 1.4;
+      padding-top: 10px;
+      height: 240px;
+    }
+
+    &:disabled {
+      background: $gray-3;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-family: "PoppinsMedium";
+    padding: 0 0 5px;
+  }
+
+  &__description {
+    font-family: "PoppinsMedium";
+
+    &--center {
+      text-align: center;
+    }
+
+    &--right {
+      text-align: right;
+    }
+
+    a {
+      color: $red;
+    }
+  }
+}

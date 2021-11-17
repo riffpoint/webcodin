@@ -1,0 +1,43 @@
+// Bootstrap
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+$grid-gutter-width: 30px;
+$grid-gutter-width-mb: 15px;
+
+// Colors
+$white: #fff;
+$green: #107c10;
+$default: #4c4a48;
+$red: #d13438;
+$blue: #0063b1;
+
+$black: #1c1f23;
+$black-2: #181b1e;
+
+$gray: #ebedf2;
+$gray-2: #9699a2;
+$gray-3: #f7f7f7;
+$gray-4: #f9f9f9;
+
+$orange: #ff8c00;
+
+$danger: $red;
+$success: $green;
+
+$brand-color-1: $red;
+$brand-color-2: $black;
+
+$main-bg: #eeeff5;
+
+// Globals
+$border-color: #ebedf2;
+$input-color: #9699a2;
+$input-padding: 14px;
+
+// Sidebar
+$sidebar-bg: $black;

@@ -1,0 +1,79 @@
+/*------------------------------------------------------*/
+/*--- Font Family :: [Poppins] :: Regular ---*/
+/*------------------------------------------------------*/
+@font-face {
+  font-family: "PoppinsRegular";
+  src: url("../../assets/fonts/poppins-regular.eot");
+  src: url("../../assets/fonts/poppins-regular.eot?#iefix") format("embedded-opentype"),
+    url("../../assets/fonts/poppins-regular.woff2") format("woff2"),
+    url("../../assets/fonts/poppins-regular.woff") format("woff"),
+    url("../../assets/fonts/poppins-regular.ttf") format("truetype"),
+    url("../../assets/fonts/poppins-regular.svg#poppinsregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*------------------------------------------------------*/
+/*--- Font Family :: [Poppins] :: Light ---*/
+/*------------------------------------------------------*/
+@font-face {
+  font-family: "PoppinsLight";
+  src: url("../../assets/fonts/poppins-light.eot");
+  src: url("../../assets/fonts/poppins-light.eot?#iefix") format("embedded-opentype"),
+    url("../../assets/fonts/poppins-light.woff2") format("woff2"), url("../../assets/fonts/poppins-light.woff") format("woff"),
+    url("../../assets/fonts/poppins-light.ttf") format("truetype"),
+    url("../../assets/fonts/poppins-light.svg#poppinslight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*------------------------------------------------------*/
+/*--- Font Family :: [Poppins] :: Italic ---*/
+/*------------------------------------------------------*/
+@font-face {
+  font-family: "PoppinsItalic";
+  src: url("../../assets/fonts/poppins-italic.eot");
+  src: url("../../assets/fonts/poppins-italic.eot?#iefix") format("embedded-opentype"),
+    url("../../assets/fonts/poppins-italic.woff2") format("woff2"), url("../../assets/fonts/poppins-italic.woff") format("woff"),
+    url("../../assets/fonts/poppins-italic.ttf") format("truetype"),
+    url("../../assets/fonts/poppins-italic.svg#poppinsitalic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*------------------------------------------------------*/
+/*--- Font Family :: [Poppins] :: Medium ---*/
+/*------------------------------------------------------*/
+@font-face {
+  font-family: "PoppinsMedium";
+  src: url("../../assets/fonts/poppins-medium.eot");
+  src: url("../../assets/fonts/poppins-medium.eot?#iefix") format("embedded-opentype"),
+    url("../../assets/fonts/poppins-medium.woff2") format("woff2"), url("../../assets/fonts/poppins-medium.woff") format("woff"),
+    url("../../assets/fonts/poppins-medium.ttf") format("truetype"),
+    url("../../assets/fonts/poppins-medium.svg#poppinsmedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*------------------------------------------------------*/
+/*--- Font Family :: [Roboto] :: Bold ---*/
+/*------------------------------------------------------*/
+@font-face {
+  font-family: "RobotoBold";
+  src: url("../../assets/fonts/roboto-bold.eot");
+  src: url("../../assets/fonts/roboto-bold.eot?#iefix") format("embedded-opentype"),
+    url("../../assets/fonts/roboto-bold.woff2") format("woff2"), url("../../assets/fonts/roboto-bold.woff") format("woff"),
+    url("../../assets/fonts/roboto-bold.ttf") format("truetype"),
+    url("../../assets/fonts/roboto-bold.svg#robotobold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*------------------------------------------------------*/
+/*--- Font Family :: [Roboto] :: Medium ---*/
+/*------------------------------------------------------*/
+@font-face {
+  font-family: "RobotoMedium";
+  src: url("../../assets/fonts/roboto-medium.eot");
+  src: url("../../assets/fonts/roboto-medium.eot?#iefix") format("embedded-opentype"),
+    url("../../assets/fonts/roboto-medium.woff2") format("woff2"), url("../../assets/fonts/roboto-medium.woff") format("woff"),
+    url("../../assets/fonts/roboto-medium.ttf") format("truetype"),
+    url("../../assets/fonts/roboto-medium.svg#robotomedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,23 @@
+<template>
+  <div class="page-404">
+    <div class="container">
+      <div class="page-404__inner">
+        <h2 class="page-404__title">404</h2>
+        <div class="page-404__subtitle">Oops! Something went wrong here...</div>
+        <div class="page-404__description">
+          Sorry, we cannot find that page!<br />
+          Either something went wrong or the page doesn't exist anymore.
+        </div>
+        <div class="btn-wrap">
+          <router-link href="#" to="/admin" class="btn btn--red">
+            Back To Dashboard
+          </router-link>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+export default {};
+</script>

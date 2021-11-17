@@ -19,7 +19,7 @@ export class UserService {
     this.usersCollection = afs.collection<User>('users');
   }
 
-  GetAllUsers() {
+  GetAllUsers(): Observable<User[]> {
     this.users = this.usersCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as User;
@@ -32,21 +32,21 @@ export class UserService {
     return this.users;
   }
 
-  GetUser(id: string) {
+  GetUser(id: string): Observable<unknown> {
     return this.usersCollection.doc(id).valueChanges();
   }
 
-  SetUserData(user: User) {
+  SetUserData(user: User): Promise<void> {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
     const userData = {
       name: user.name,
       surname: user.surname,
       occupation: user.occupation
-    }
+    };
 
     return userRef.set(userData, {
       merge: true
-    })
+    });
   }
 }

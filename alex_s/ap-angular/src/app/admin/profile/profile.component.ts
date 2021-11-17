@@ -5,7 +5,7 @@ import { AuthService } from '../../shared/services/auth/auth.service';
 import { GlobalService } from '../../shared/services/global/global.service';
 import { MustMatch } from '../../shared/validators/must-match.validator';
 
-import { User } from "../../shared/services/user/user";
+import { User } from '../../shared/services/user/user';
 
 @Component({
   selector: 'app-profile',
@@ -13,17 +13,17 @@ import { User } from "../../shared/services/user/user";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  noImage: string = 'assets/images/site/no-image.svg';
+  noImage = 'assets/images/site/no-image.svg';
   userAvatarPreview: string | ArrayBuffer;
   userAvatar: string | ArrayBuffer = this.noImage;
   userAvatarFile: File | null;
-  userAvatarDelete: boolean = false;
-  isSubmitted: boolean = false;
-  loading: boolean = false;
+  userAvatarDelete = false;
+  isSubmitted = false;
+  loading = false;
   usersSubscription: any;
   user: User;
-  userId: string = '';
-  tabState: string = 'GeneralInformation';
+  userId = '';
+  tabState = 'GeneralInformation';
   passwordOld: string;
   password: string;
   passwordConfirm: string;
@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     surname: ['', [Validators.required]],
     email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
     occupation: ['', [Validators.required]],
-  })
+  });
 
   userChangePasswordForm = this.fb.group({
     passwordOld: ['', Validators.required],
@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     passwordConfirm: ['', Validators.required]
   }, {
     validator: MustMatch('password', 'passwordConfirm')
-  })
+  });
 
   ngOnInit(): void {
     this.loading = true;
@@ -74,19 +74,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.usersSubscription.unsubscribe();
   }
 
-  uploadPreview(event) {
+  uploadPreview(event): void {
     this.userAvatarFile = event.target.files[0];
 
     const reader: FileReader = new FileReader();
 
     reader.onloadend = () => {
       this.userAvatarPreview = reader.result;
-    }
+    };
 
     reader.readAsDataURL(this.userAvatarFile);
   }
 
-  clearAvatar() {
+  clearAvatar(): void {
     if (this.user.photoURL) {
       this.userAvatarDelete = true;
     }
@@ -95,17 +95,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.userAvatarPreview = this.noImage;
   }
 
-  switchTab(event: any, tabName: string) {
+  switchTab(event: any, tabName: string): void {
     event.stopPropagation();
     event.preventDefault();
 
     this.tabState = tabName;
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.isSubmitted = true;
 
-    if (this.userForm.status !== "INVALID") {
+    if (this.userForm.status !== 'INVALID') {
       this.loading = true;
 
       this.user.name = this.userForm.controls.name.value;
@@ -117,7 +117,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
           if (this.userAvatarFile) {
             this.globalService.UploadImage(this.userAvatarFile, this.user.uid, 'avatars', 'users').then(() => {
               this.loading = false;
-            })
+            });
           } else if (this.userAvatarDelete) {
             this.globalService.DeleteImage(this.user.uid, 'avatars', 'users').then(() => {
               this.loading = false;
@@ -130,19 +130,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   }
 
-  onChangePassword() {
+  onChangePassword(): void {
     this.isSubmitted = true;
 
-    if (this.userChangePasswordForm.status !== "INVALID") {
+    if (this.userChangePasswordForm.status !== 'INVALID') {
       this.loading = true;
 
       this.passwordOld = this.userChangePasswordForm.controls.passwordOld.value;
       this.password = this.userChangePasswordForm.controls.password.value;
       this.passwordConfirm = this.userChangePasswordForm.controls.passwordConfirm.value;
-
-      console.log(this.passwordOld);
-      console.log(this.password);
-      console.log(this.passwordConfirm);
 
       this.authService.ChangePassword(this.passwordOld, this.user.email, this.password)
         .then(() => {

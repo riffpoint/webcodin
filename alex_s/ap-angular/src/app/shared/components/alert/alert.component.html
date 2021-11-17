@@ -4,7 +4,8 @@
         <div class="alert__title">{{ alert.title }}</div>
         <div class="alert__text">{{ alert.message }}</div>
         <div class="alert__btns">
-            <button class="{{ btnClass(alert) }}" type="button" (click)="removeAlert(alert)">Try Again</button>
+            <button *ngIf="alert.type === 3" class="{{ btnClass(alert) }}" type="button" (click)="removeAlert(alert)">Try Again</button>
+            <button *ngIf="alert.type === 0" class="{{ btnClass(alert) }}" type="button" (click)="removeAlert(alert)">OK</button>
         </div>
         <button class="alert__close" type="button" (click)="removeAlert(alert)"><i class="la la-close"></i></button>
     </div>

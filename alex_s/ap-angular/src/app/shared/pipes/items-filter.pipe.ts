@@ -24,7 +24,7 @@ export class ItemsFilterPipe implements PipeTransform {
             test = true;
           }
         }
-      })
+      });
 
       return test;
     });

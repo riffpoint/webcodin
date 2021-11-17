@@ -26,6 +26,12 @@
     }
   }
 
+  @include media(md) {
+    .loading {
+      left: 0;
+    }
+  }
+
   &__content {
     display: flex;
     flex-direction: column;

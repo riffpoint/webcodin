@@ -8,23 +8,23 @@ import { AuthService } from '../../shared/services/auth/auth.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-  isSubmitted: boolean = false;
-  loading: boolean = false;
+  isSubmitted = false;
+  loading = false;
 
   constructor(private fb: FormBuilder, public authService: AuthService) { }
 
   userForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]]
-  })
+  });
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.isSubmitted = true;
 
-    if (this.userForm.status !== "INVALID") {
+    if (this.userForm.status !== 'INVALID') {
       this.loading = true;
 
       this.authService.SignIn(this.userForm.controls.email.value, this.userForm.controls.password.value)

@@ -1,0 +1,85 @@
+.btn-group {
+  margin: 0 -7px;
+
+  .btn {
+    margin: 0 7px;
+  }
+}
+
+.btn {
+  font-family: "PoppinsMedium";
+  font-size: 1rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  min-width: 120px;
+  border-radius: 2px;
+  padding: 6px 10px 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &--red {
+    background: $brand-color-1;
+    color: $white;
+
+    &:not(:disabled):not(.btn--disabled):hover {
+      background: darken($brand-color-1, 5%);
+      color: $white;
+    }
+  }
+
+  &--success {
+    background: $success;
+    color: $white;
+
+    &:not(:disabled):not(.btn--disabled):hover {
+      background: darken($success, 5%);
+      color: $white;
+    }
+  }
+
+  &--orange {
+    background: $orange;
+    color: $white;
+
+    &:not(:disabled):not(.btn--disabled):hover {
+      background: darken($orange, 5%);
+      color: $white;
+    }
+  }
+
+  &--blue {
+    background: $blue;
+    color: $white;
+
+    &:not(:disabled):not(.btn--disabled):hover {
+      background: darken($brand-color-2, 5%);
+      color: $white;
+    }
+  }
+
+  &--gray {
+    background: $gray;
+    color: $default;
+
+    &:not(:disabled):not(.btn--disabled):hover {
+      background: $brand-color-1;
+      color: $white;
+    }
+  }
+
+  &--cancel {
+    background: $white;
+    color: $default;
+    border: 1px solid $border-color;
+  }
+
+  &--disabled,
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}

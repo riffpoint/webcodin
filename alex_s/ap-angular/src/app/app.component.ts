@@ -26,22 +26,22 @@ import {
   ]
 })
 export class AppComponent {
-  sidebarIsOpen: boolean = false;
-  direction: string = "";
+  sidebarIsOpen = false;
+  direction = '';
 
   toggleSidebar(): void {
     this.sidebarIsOpen = !this.sidebarIsOpen;
   }
 
   onSwipe(event): void {
-    const x = Math.abs(event.deltaX) > 40 ? (event.deltaX > 0 ? "Right" : "Left") : "";
-    const y = Math.abs(event.deltaY) > 40 ? (event.deltaY > 0 ? "Down" : "Up") : "";
+    const x = Math.abs(event.deltaX) > 40 ? (event.deltaX > 0 ? 'Right' : 'Left') : '';
+    const y = Math.abs(event.deltaY) > 40 ? (event.deltaY > 0 ? 'Down' : 'Up') : '';
 
     this.direction = `You swiped in <b> ${x} ${y} </b> direction <hr>`;
 
     if (x === 'Right') {
       this.sidebarIsOpen = true;
-    } else if (x === 'Left') { 
+    } else if (x === 'Left') {
       this.sidebarIsOpen = false;
     }
   }
